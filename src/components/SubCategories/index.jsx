@@ -5,13 +5,9 @@ import { navigateTo } from 'Routes'
 
 function SubCategories({ selectedCategory, categories }) {
   const [subCategories, setSubCategories] = React.useState([])
-
   useMemo(() => {
-    const subs = categories.filter((category) => category.sub_cat)
-    // setSubCategories(subs.filter((sub) => sub.sub_category === selectedCategory.id))
-    setSubCategories(subs.filter((sub) => sub.sub_category === 6))
+    setSubCategories(categories.filter((sub) => sub.sub_category === selectedCategory.id))
   }, [selectedCategory, categories])
-
   return (
     <div className="subcategory">
       <div className="subcategory__list">

@@ -48,16 +48,7 @@ function CategoryPage() {
         {loading ? null : (
           <div className="category__container">
             <div className="category__main-cats">
-              {[
-                {
-                  name: 'پسرانه',
-                  id: 1,
-                },
-                {
-                  name: 'دخترانه',
-                  id: 2,
-                },
-              ].map((category) => (
+              {mainCategories.slice(0, 2).map((category) => (
                 <div
                   className={`category__main-item ${
                     selectedCategory.id === category.id ? 'category__main-item--selected' : ''
