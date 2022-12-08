@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import AppBarShopIcon from 'components/UI/Icons/AppBarShopIcon'
 import { Link } from 'react-router-dom'
 import UserIcon from 'components/UI/Icons/UserIcon'
@@ -9,45 +9,35 @@ import { ROUTE_PATHS } from 'Routes'
 import { useSelector } from 'react-redux'
 import Popper from '@mui/material/Popper'
 import { Box } from '@mui/system'
-import { Grow } from '@mui/material'
-
+import { Fade, Grow } from '@mui/material'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp'
+import { companyInfo } from 'shopInformation'
+import { Phone, Telegram } from '@mui/icons-material'
+import { useOutsideClick } from 'hooks/useOutsideClick'
 const color = '#292D32'
 const popperStyle = {
-  p: 1,
+  // p: 1,
+  width: '50px',
+  height: '50px',
   bgcolor: '#f4544a',
   opacity: '0.7',
   borderRadius: '80px',
-  mb: '5px',
-  boxShadow: '4px 38px 62px rgb(0 0 0 / 50%)',
+  mb: '8px',
+  // boxShadow: '4px 38px 62px rgb(0 0 0 / 50%)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: `radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%), radial-gradient(65.28% 65.28% at 26.39% 20.83%, rgba(255, 255, 255, 0.413) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%), #f4544a`,
+  boxShadow: `4px 38px 62px rgb(0 0 0 / 50%)`,
 }
 function Appbar() {
   const { user } = useSelector((state) => state.users)
-
   const [open, setOpen] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const handleClick = (event) => {
+  const handleClose = (event) => {
     setAnchorEl(event.currentTarget)
     setOpen((previousOpen) => !previousOpen)
   }
-
-  // useEffect(() => {
-  //   // close the menu when the user clicks outside of it
-  //   window.addEventListener('click', (e) => {
-  //     if (!e.target.classList.contains('appbar__contact')) {
-  //       if (!open || anchorEl) return
-  //       handleClick(e)
-  //     }
-  //   })
-  //   return () => {
-  //     window.removeEventListener('click', (e) => {
-  //       if (!e.target.classList.contains('appbar__contact')) {
-  //         console.log(anchorEl, 'anchorEl')
-  //         if (!open || anchorEl) return
-  //         handleClick(e)
-  //       }
-  //     })
-  //   }
-  // }, [])
 
   const canBeOpen = open && Boolean(anchorEl)
   const id = canBeOpen ? 'transition-popper' : undefined
@@ -71,7 +61,7 @@ function Appbar() {
           <Link to={user ? ROUTE_PATHS.profile : ROUTE_PATHS.login} className="appbar__profile">
             <UserIcon color={color} />
           </Link>
-          <div onClick={handleClick} className="appbar__contact">
+          <div onClick={handleClose} className="appbar__contact">
             <CallUsIcon color={color} className={'appbar__contact'} />
           </div>
         </div>
@@ -117,12 +107,41 @@ function Appbar() {
       </div>
       <Popper id={id} open={open} anchorEl={anchorEl} transition>
         {({ TransitionProps }) => (
-          <Grow {...TransitionProps} timeout={350}>
-            <div>
-              <Box sx={popperStyle}> whatspapp.</Box>
-              <Box sx={popperStyle}> whatspapp.</Box>
-            </div>
-          </Grow>
+          <Fade {...TransitionProps} timeout={350}>
+            <Box sx={{ mb: '16px' }}>
+              <Box sx={popperStyle}>
+                <a className="appbar__popper__link" href={companyInfo.whatsAppLink} target="_blank" rel="noreferrer">
+                  <WhatsAppIcon
+                    sx={{
+                      color: '#fff',
+                    }}
+                    fontSize="large"
+                  />
+                </a>
+              </Box>
+              <Box sx={popperStyle}>
+                <a className="appbar__popper__link" href={companyInfo.telegramLink} target="_blank" rel="noreferrer">
+                  <Telegram
+                    sx={{
+                      color: '#fff',
+                      mr: '5px',
+                    }}
+                    fontSize="large"
+                  />
+                </a>
+              </Box>
+              <Box sx={popperStyle}>
+                <a className="appbar__popper__link" href={companyInfo.phoneNumberLink} target="_blank" rel="noreferrer">
+                  <Phone
+                    sx={{
+                      color: '#fff',
+                    }}
+                    fontSize="large"
+                  />
+                </a>
+              </Box>
+            </Box>
+          </Fade>
         )}
       </Popper>
     </div>

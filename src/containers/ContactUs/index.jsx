@@ -1,6 +1,6 @@
 // import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk'
 // import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { companyInfo } from '../../ShopInformation'
+import { companyInfo } from '../../shopInformation'
 
 function ContactUs() {
   return (

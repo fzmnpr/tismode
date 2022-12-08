@@ -49,7 +49,7 @@
       bottom: 55%;
       transform: translateX(-50%);
       // padding: 0.5rem;
-      padding: 20px 23px;
+      padding: 20px 25px;
 
       display: flex;
       justify-content: center;
@@ -75,6 +75,11 @@
     }
     svg {
       vertical-align: middle;
+    }
+  }
+  &__popper {
+    &__link {
+      display: contents;
     }
   }
 }
