@@ -1,0 +1,43 @@
+.addresses {
+  &__list {
+    margin-top: 1rem;
+    &__item {
+      padding: 1rem;
+      background: #ffffff;
+      box-shadow: $main-box-shadow;
+      border-radius: 24px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      &__address {
+        margin-right: 20px;
+        width: 100%;
+      }
+      &__text {
+        font-weight: 300;
+        font-size: 14px;
+      }
+      svg {
+        vertical-align: middle;
+      }
+      &__edit {
+        color: $green-primary;
+        font-size: 12px;
+        font-weight: 300;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        svg {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  &__add-new {
+    &__text {
+      display: inline-block;
+    }
+  }
+}

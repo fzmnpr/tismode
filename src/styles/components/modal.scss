@@ -1,0 +1,64 @@
+.modal {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.product-variant-modal {
+  font-family: 'Estetad', sans-serif;
+
+  gap: 2rem;
+  &__sizes {
+    margin-bottom: 1rem;
+  }
+  &__add-btn {
+    background: linear-gradient(230.01deg, #5fc62f 18.73%, #00653b 89.48%);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: white;
+    margin-left: 0.5rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    @media screen and (max-width: 768px) {
+      font-size: 0.75rem;
+    }
+  }
+  &__cancel-btn {
+    background: linear-gradient(230.01deg, #ff4213 18.73%, #ff7640 89.48%);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    color: white;
+    margin-left: 0.5rem;
+    border: none;
+    @media screen and (max-width: 768px) {
+      font-size: 0.75rem;
+    }
+  }
+  &__select {
+    display: flex;
+    align-items: center;
+    svg {
+      vertical-align: middle;
+      color: #474646;
+      cursor: pointer;
+    }
+    &__quantity {
+      border-radius: 3px;
+      border: 1px solid #cbcbcb;
+      padding: 1px 5px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.MuiDialog-container {
+  min-width: calc(100vw - 3rem);
+}

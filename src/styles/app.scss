@@ -1,0 +1,58 @@
+:root {
+  --max-container-width: 950px;
+}
+
+body {
+  background: #dadada;
+  min-height: 95vh;
+  &:after {
+    content: url('../assets/images/Ellipse4.png');
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: translateY(9px);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 40%;
+    right: 0;
+    background: #f8043f;
+    filter: blur(48px);
+  }
+}
+.App {
+  // background: url('../assets/images/background.png');
+  // background: linear-gradient(180deg, #3CB1E2 0%, rgba(245, 245, 245, 0) 30.9%);
+  padding-top: 50px;
+  direction: rtl;
+  background-color: transparent;
+}
+header,
+.container {
+  padding-left: 110px;
+  padding-right: 110px;
+}
+
+@media screen and (max-width: 990px) {
+  .App {
+    padding-top: 18px;
+  }
+  header,
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+.Toastify__toast-container {
+  z-index: 99999 !important;
+}
+img,
+video {
+  max-width: 100%;
+}

@@ -1,0 +1,205 @@
+.thumbnail {
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 16px;
+  }
+  &__image {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-left: 16px;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.products {
+  position: relative;
+  min-height: 70vh;
+  &__list {
+    @media screen and (min-width: 980px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__not-found {
+    padding: 16px;
+    font-weight: 700;
+    background: #0babb5;
+    box-shadow: inset 0px 4px 4px rgba(255, 255, 255, 0.4), inset 0px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    width: 100%;
+    color: #fff;
+    margin-top: 16px;
+  }
+  &__filter {
+    display: flex;
+    margin: 16px 0;
+    &__item {
+      padding: 5px 6px;
+      background: #ffffff;
+      border-radius: 20px;
+      margin-left: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      &--active {
+        background: #27ae60;
+        color: #fff;
+      }
+    }
+  }
+}
+.product {
+  margin-top: 16px;
+  &__card {
+    @media screen and (min-width: 980px) {
+      margin-left: 16px;
+    }
+  }
+  &__title {
+    font-weight: 700;
+    color: #000;
+  }
+  &__price {
+    display: inline-block;
+    &-wrapper {
+      color: #208312;
+      margin-right: auto;
+    }
+    &-discount {
+      color: #eb5757;
+      display: block;
+      font-size: 10px;
+    }
+  }
+  &__image {
+    max-height: 320px;
+    display: flex;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__images {
+    &__swiper {
+      border-radius: 16px;
+      border: 1px solid #f2f2f2;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+  }
+  &__head {
+    &__wrapper {
+      padding: 16px 21px;
+      border-radius: 16px;
+    }
+    &__title {
+      font-weight: 700;
+      font-size: 24px;
+      margin-top: 19px;
+    }
+  }
+  &__stamp-area {
+    margin-bottom: 21px;
+    cursor: pointer;
+    svg {
+      margin-left: 18px;
+    }
+  }
+  &__options {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+    &-box {
+      padding: 16px 8px;
+      padding-right: 8px;
+    }
+  }
+  &__option {
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    white-space: nowrap;
+    &__title {
+      margin-left: 6px;
+    }
+  }
+  &__info {
+    &__price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 16px;
+      margin-top: 16px;
+
+      background: radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        radial-gradient(
+            65.28% 65.28% at 26.39% 20.83%,
+            rgba(255, 255, 255, 0.413) 0%,
+            rgba(255, 255, 255, 0) 69.79%,
+            rgba(255, 255, 255, 0) 100%
+          )
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        rgba(207, 46, 123, 0.25);
+      box-shadow: 4px 38px 62px rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+    }
+  }
+  &__image {
+    max-height: 320px;
+  }
+  &__quantity {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.33);
+    border-radius: 8px;
+    padding: 5px 11px;
+    svg {
+      vertical-align: middle;
+    }
+    span {
+      &:not(:last-child) {
+        border-left: 0.5px solid #bdbdbd;
+      }
+    }
+    &__number {
+      padding: 0 13px;
+    }
+    &__add {
+      padding-left: 19px;
+      cursor: pointer;
+    }
+    &__remove {
+      padding-right: 19px;
+      cursor: pointer;
+    }
+  }
+  &__description {
+    margin-top: 16px;
+    padding: 20px 16px;
+  }
+}
+.product-price {
+  font-weight: 900;
+  font-size: 24px;
+  color: #206423;
+}
+.discount-price {
+  font-weight: 300;
+  font-size: 14px;
+}
+.variant-error {
+}

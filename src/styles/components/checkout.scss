@@ -1,0 +1,172 @@
+.checkout {
+  &__container {
+    margin-top: 1rem;
+    .addresses__list__item {
+      cursor: pointer;
+      &__name {
+        color: $warning;
+      }
+    }
+  }
+  &__form {
+    direction: rtl;
+
+    &__title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    &__content {
+      form {
+        display: flex;
+        flex-flow: column;
+        width: 80%;
+        margin: 0 auto;
+
+        input,
+        textarea {
+          width: 100%;
+          border: 1px solid #ccc;
+          padding: 0.5rem 1rem;
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 8px;
+          font-size: 1rem;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      textarea {
+        resize: none;
+        height: 130px;
+      }
+      .label {
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 16px;
+      }
+      .error-message {
+        margin-top: 3px;
+      }
+      &__row {
+        display: flex;
+        width: 100%;
+        &--last-child {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 1rem;
+          align-items: start;
+          @media screen and (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          flex-wrap: wrap;
+        }
+      }
+      &__submit-btn {
+        font-size: 1rem;
+        width: 100%;
+        background-color: $green-primary;
+        border: none;
+        color: #ffffff;
+        padding: 8px 0;
+        border-radius: 8px;
+      }
+      &__cancel-btn {
+        font-size: 1rem;
+        width: 100%;
+        background-color: $secondary;
+        border: none;
+        color: #ffffff;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-right: 5px;
+      }
+      &__buttons {
+        display: flex;
+        margin-top: 13px;
+      }
+      &__item {
+        width: 100%;
+        &:not(:first-child) {
+          margin-top: 13px;
+        }
+      }
+    }
+  }
+  &__submit-btn {
+    font-size: 1rem;
+    width: 100%;
+    background-color: $green-primary;
+    border: none;
+    color: #ffffff;
+    padding: 8px 0;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  &__error {
+    background-color: rgba(255, 1, 1, 0.616);
+    margin-top: 16px;
+    border-radius: 8px;
+    padding: 25px;
+    color: #ffffff;
+  }
+}
+.checkout-box-item {
+  padding: 25px;
+  padding-right: 35px;
+  padding-left: 25px;
+  background: #ffffff;
+  box-shadow: $main-box-shadow;
+  border-radius: 24px;
+  margin-bottom: 1rem;
+  max-width: var(--max-container-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+.checkout-products {
+  &__product {
+    background: #ffffff;
+    box-shadow: inset 0px -2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 12px;
+  }
+}
+.checkout-price-infos {
+  &__body {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+  }
+  &__items {
+    list-style-type: none;
+    margin-right: 8px;
+    width: 100%;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    &__price {
+      color: $green-primary;
+      display: flex;
+      align-items: center;
+      &--discount {
+        color: $secondary;
+        img {
+          filter: invert(16%) sepia(99%) saturate(3404%) hue-rotate(4deg) brightness(95%) contrast(118%);
+        }
+      }
+      img {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+.css-3x20y-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0 !important;
+  border: none;
+}

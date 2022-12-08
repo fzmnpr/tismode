@@ -1,0 +1,37 @@
+import React from 'react'
+import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import { navigateTo } from 'Routes'
+
+function SubCategories({ selectedCategory, categories }) {
+  const [subCategories, setSubCategories] = React.useState([])
+
+  useMemo(() => {
+    const subs = categories.filter((category) => category.sub_cat)
+    // setSubCategories(subs.filter((sub) => sub.sub_category === selectedCategory.id))
+    setSubCategories(subs.filter((sub) => sub.sub_category === 6))
+  }, [selectedCategory, categories])
+
+  return (
+    <div className="subcategory">
+      <div className="subcategory__list">
+        {subCategories.map((subCategory) => (
+          <Link
+            to={navigateTo.ProductCategory(subCategory.id, subCategory.name)}
+            className="subcategory__item"
+            key={subCategory.id}
+          >
+            <div className="subcategory__item__image">
+              <img src={subCategory.image} alt="" />
+            </div>
+            <div className="subcategory__item__name">
+              <span>{subCategory.name}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default SubCategories

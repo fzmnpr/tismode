@@ -1,0 +1,108 @@
+footer {
+  height: 243px;
+  z-index: 1;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+  .footer {
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-top: 40px;
+    margin-bottom: 68px;
+    background-color: #fff;
+    height: 175px;
+    width: 100%;
+    // position: absolute;
+    // bottom: 0;
+    width: 100%;
+
+    &__navs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 59px;
+      border-bottom: 1px solid #ededed;
+      padding-left: 169px;
+      padding-right: 122px;
+    }
+    &__logo {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      color: $primary;
+      p {
+        font-size: 14px;
+        margin-left: 8px;
+        font-weight: bold;
+      }
+    }
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      padding-bottom: 16px;
+      padding-left: 169px;
+      padding-right: 169px;
+
+      color: rgba(123, 128, 140, 1);
+      p {
+        font-size: 14px;
+      }
+    }
+    &__social {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .nav-links {
+    justify-content: flex-start;
+
+    a {
+      color: rgba(117, 117, 117, 1);
+    }
+    img {
+      filter: invert(55%);
+    }
+  }
+}
+.mobile-footer {
+  background-color: #ededed;
+  align-items: center;
+  // position: absolute;
+  // bottom: 0;
+  // right: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 970px) {
+  footer {
+    padding-left: 18px;
+    padding-right: 18px;
+    height: auto;
+    background-color: #ededed;
+    .footer__logo {
+      justify-content: flex-end;
+    }
+    .footer__copyright {
+      p {
+        font-size: 12px;
+      }
+    }
+    .footer__social {
+      justify-content: flex-end;
+    }
+    .footer__logo {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      color: $primary;
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}

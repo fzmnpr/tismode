@@ -1,0 +1,62 @@
+.desktop-search-bar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+
+  .inputfield {
+    width: 100%;
+    background: #f9f9f9;
+    border: 1px solid #cbcbcb;
+    border-radius: 16px;
+    height: 48px;
+    align-content: center;
+    justify-content: center;
+    input {
+      font-family: Estedad;
+      font-size: 16px;
+      color: $primary-gray;
+      padding: 0 14px;
+    }
+    fieldset {
+      border: none;
+    }
+  }
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+.amount-picker {
+  /* CSS */
+  align-items: center;
+  background-color: #fff;
+  border-radius: $radius;
+  border-style: none;
+
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  height: 1.5rem;
+  width: 100%;
+  justify-content: space-around;
+  letter-spacing: 0.25px;
+  line-height: normal;
+  max-width: 100%;
+  padding: 2px 5px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 15ms linear 30ms,
+    transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  flex: 0.5;
+  .increment,
+  .decrement {
+    color: $primary;
+  }
+}

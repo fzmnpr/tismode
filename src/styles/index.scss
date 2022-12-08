@@ -1,0 +1,60 @@
+// Settings
+@import './variables.scss';
+// Tools
+// @import './tools/mixins';
+// @import './tools/functions';
+//containers
+
+@import './app.scss';
+@import './components/header.scss';
+@import './components/banners.scss';
+@import './components/inputs.scss';
+@import './components/grids.scss';
+@import './globals.scss';
+@import './components/products.scss';
+@import './components/map.scss';
+@import './components/footer.scss';
+@import './components/colors.scss';
+@import './components/sizes.scss';
+@import './components/cart.scss';
+@import './components/login.scss';
+@import './components/category.scss';
+@import './components/profile.scss';
+@import './components/modal.scss';
+@import './components/search.scss';
+@import './components/checkout.scss';
+@import './components/appbar.scss';
+@import './components/contact-us.scss';
+@import './components/addresses.scss';
+@import './components/breadcrumb.scss';
+@import './components/delivery.scss';
+@import './components/orders.scss';
+@font-face {
+  font-family: 'Estedad';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/Fonts/Estedad/Estedad-Regular.ttf');
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Estedad, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+p,
+h1,
+h2,
+h5,
+h6,
+small,
+h3,
+a {
+  font-family: Estedad, sans-serif !important;
+}
+html,
+body {
+  overflow-x: hidden;
+}

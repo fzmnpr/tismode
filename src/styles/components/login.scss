@@ -1,0 +1,120 @@
+.login {
+  margin-top: 45px;
+  @media screen and (max-width: 840px) {
+    margin-top: 16px;
+  }
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  filter: drop-shadow(-7px 7px 7px rgba(0, 0, 0, 0.25));
+  border-radius: $radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      color: #ff5c08;
+      font-size: 3.375rem;
+      margin-left: 1rem;
+    }
+    &__divider {
+      vertical-align: middle;
+      font-size: 5rem;
+      margin-left: 1rem;
+      height: 64px;
+      width: 10px;
+      background-color: #ff5c08;
+    }
+  }
+  .step1 {
+    width: 60%;
+  }
+  &__form {
+    &__actions {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+    }
+    &__phone {
+      text-align: left;
+      padding: 1rem 0.875rem;
+    }
+    &__code {
+      text-align: center;
+    }
+    &__confirm {
+      border-radius: $radius;
+      font-size: 2rem;
+      padding: 3px 20px;
+    }
+    &__enter {
+      border-radius: 50%;
+      width: auto;
+      height: 100%;
+      padding: 8px 7px 2px 10px;
+    }
+    &__error {
+      color: red;
+      padding-right: 1rem;
+      padding-top: 0.5rem;
+    }
+    button {
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(230.01deg, #ff5c08 18.73%, #ae2a01 89.48%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      filter: drop-shadow(-7px 7px 7px rgba(0, 0, 0, 0.25));
+      margin-left: 3px;
+    }
+  }
+  input {
+    direction: ltr;
+    width: 100%;
+    height: 72px;
+    border-radius: $radius;
+    border: none;
+    font-size: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 12px;
+    transition: all 0.5s ease;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+@media (max-width: 780px) {
+  .login {
+    input {
+      margin: 1rem 0;
+      width: auto;
+    }
+    &__title {
+      h3 {
+        font-size: 2rem;
+      }
+      &__divider {
+        height: 40px;
+        width: 5px;
+      }
+    }
+    &__form {
+      text-align: center;
+      &__error {
+        font-size: 0.825rem;
+      }
+      &__actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        button {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

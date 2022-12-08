@@ -1,0 +1,100 @@
+.appbar {
+  @media (min-width: 992px) {
+    display: none;
+  }
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  max-height: 62px;
+  transform: translateY(9px);
+  &-shape-right {
+    width: 100%;
+    height: 62px;
+    background-color: red;
+  }
+  &-shape-left {
+    width: 100%;
+    height: 62px;
+    background-color: red;
+  }
+  &-bg {
+    width: 100%;
+    min-width: 20px;
+    display: flex;
+
+    &::after,
+    &::before {
+      content: '';
+      flex-grow: 1;
+      background-color: #d9d9d9;
+      z-index: -1;
+      opacity: 0.7;
+    }
+  }
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: absolute;
+    min-height: 62px;
+    &__shop {
+      margin-left: 55px;
+    }
+    &__cart {
+      position: absolute;
+      left: 50%;
+      bottom: 55%;
+      transform: translateX(-50%);
+      // padding: 0.5rem;
+      padding: 20px 23px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 50%;
+
+      // width: 90px;
+      // height: 74px;
+
+      background: radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        radial-gradient(
+            65.28% 65.28% at 26.39% 20.83%,
+            rgba(255, 255, 255, 0.413) 0%,
+            rgba(255, 255, 255, 0) 69.79%,
+            rgba(255, 255, 255, 0) 100%
+          )
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        #f4544a;
+      box-shadow: 4px 38px 62px rgba(0, 0, 0, 0.5);
+      border-radius: 83px;
+    }
+    svg {
+      vertical-align: middle;
+    }
+  }
+}
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}

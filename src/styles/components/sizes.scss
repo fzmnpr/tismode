@@ -1,0 +1,25 @@
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .size-item {
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px;
+
+    &__size {
+      border-radius: 5px;
+      font-size: 0.8rem;
+      background-color: rgb(199, 199, 199);
+      width: 35px;
+      height: 30px;
+    }
+    &:hover {
+      border: 2px solid $primary;
+    }
+  }
+  .active {
+    border: 2px solid $primary;
+  }
+}
