@@ -18,13 +18,19 @@ function ProductPriceArea({ response, loading, selectedSize, selectedColor }) {
       setAmount(cartItemAmount || 0)
     }
   }, [response])
+  const hasError = () => {
+    if ((response?.colors?.length || response?.color_variant) && !selectedColor) {
+      toast.error('لطفا رنگ محصول را انتخاب کنید', toastConfig)
+      return true
+    }
+    if ((response?.sizes?.length || response?.size_variant) && !selectedSize) {
+      toast.error('لطفا سایز محصول را انتخاب کنید', toastConfig)
+      return true
+    }
+    return false
+  }
   const handleProductAddToCart = (method) => {
-    if ((response?.color?.length || response?.color_variant) && !selectedColor) {
-      return
-    }
-    if ((response?.size?.length || response?.size_variant) && !selectedSize) {
-      return
-    }
+    if (hasError()) return
     if (method === 'add') {
       if (amount === response?.amount) {
         toast.error('موجودی محصول کافی نیست', toastConfig)

@@ -28,7 +28,6 @@ function Login() {
     window.addEventListener('keydown', handleEnter)
     return () => window.removeEventListener('keydown', handleEnter)
   }, [value])
-  console.log(isLoading)
   const registerUser = async () => {
     setIsLoading(true)
     try {

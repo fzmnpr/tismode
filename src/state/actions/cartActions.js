@@ -20,8 +20,7 @@ export const getCartCount = (count) => (dispatch) => {
 }
 /** product is the actual product and data is the selected variant eg.color and size*/
 export const addToCart = (product, data, isInCart) => (dispatch) => {
-  let hasError = false
-  cartHasError(product, data) ? (hasError = true) : (hasError = false)
+  const hasError =  cartHasError(product, data)
   if (hasError) return
 
   const { color, size, cartAmount } = data

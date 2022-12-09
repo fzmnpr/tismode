@@ -11,9 +11,9 @@ function PrivateRoute({ children }) {
     if (!userInfo) {
       if (window.location.href === '#/checkout') localStorage.setItem('redirect', 'checkout')
       window.location.href = '#/login'
-      toast.error('لطفا ابتدا وارد شوید', toastConfig)
+      // toast.error('لطفا ابتدا وارد شوید', toastConfig)
     }
-  })
+  }, [])
 
   // authorized so return child components
   return children

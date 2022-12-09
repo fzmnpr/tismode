@@ -26,7 +26,12 @@ function MobileAdsBanner() {
         <Link to={navigateTo.productDetails(data?.product)}>
           <div className="banner">
             <div className="banner__image">
-              <img src={data?.banner} alt={data?.name} title={data?.name} />
+              <img
+                src={data?.banner || 'http://tismod.com/media/Advbanner/girl-blouse.jpg'}
+                alt={data?.name}
+                title={data?.name}
+                loading="lazy"
+              />
             </div>
           </div>
         </Link>

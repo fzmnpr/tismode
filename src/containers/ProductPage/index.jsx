@@ -92,7 +92,9 @@ function ProductPage() {
                   variantError={variantError}
                 />
                 <div className="product-page__footer">
-                  {product?.product?.information ? <ProductDescription product={product.product} /> : null}
+                  {response?.product?.product?.information ? (
+                    <ProductDescription product={response.product.product} />
+                  ) : null}
                 </div>
               </div>
             </>

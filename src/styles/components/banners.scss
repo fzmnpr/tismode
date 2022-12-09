@@ -1,6 +1,9 @@
+.main-slider {
+  margin-bottom: 16px;
+}
 .slider-wrapper {
   //to display the box shadow completely
-  min-height: 254px;
+  min-height: 220px;
 }
 .carousel-root {
   direction: initial !important;
@@ -9,7 +12,7 @@
   width: 100%;
   height: auto;
   border-radius: $radius;
-  max-height: 140px;
+  // max-height: 140px;
 }
 .carousel__caption {
   color: black;

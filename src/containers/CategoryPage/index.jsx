@@ -48,10 +48,10 @@ function CategoryPage() {
         {loading ? null : (
           <div className="category__container">
             <div className="category__main-cats">
-              {mainCategories.slice(0, 2).map((category) => (
+              {mainCategories.slice(0, 2).map((category, index) => (
                 <div
                   className={`category__main-item ${
-                    selectedCategory.id === category.id ? 'category__main-item--selected' : ''
+                    selectedCategory.id === category.id ? `category__main-item--selected-${index}` : ''
                   }`}
                   key={category.id}
                   onClick={() =>
@@ -61,7 +61,7 @@ function CategoryPage() {
                     })
                   }
                 >
-                  <div className="category__item__name">{category.name}</div>
+                  <div className="category__main-item__name">{category.name}</div>
                 </div>
               ))}
             </div>

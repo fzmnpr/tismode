@@ -1,0 +1,25 @@
+.not-found {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  //   gap: 10px;
+  &__status {
+    color: $warning;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  &__text {
+    font-size: 20px;
+  }
+  a {
+    color: white;
+    padding: 8px;
+    background-color: $green-primary;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+  svg {
+    vertical-align: middle;
+  }
+}

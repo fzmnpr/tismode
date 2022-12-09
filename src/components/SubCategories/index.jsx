@@ -18,7 +18,7 @@ function SubCategories({ selectedCategory, categories }) {
             key={subCategory.id}
           >
             <div className="subcategory__item__image">
-              <img src={subCategory.image} alt="" />
+              <img src={decodeURIComponent(subCategory.image)} alt="" loading="lazy" />
             </div>
             <div className="subcategory__item__name">
               <span>{subCategory.name}</span>
