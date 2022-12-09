@@ -30,7 +30,7 @@ function SliderBanner() {
       }}
     />
   ) : (
-    <div className="main-slider container">
+    <div className="main-slider ">
       <SliderCarousel data={images} />
     </div>
   )

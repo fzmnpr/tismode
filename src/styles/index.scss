@@ -31,16 +31,16 @@
 @import './components/orders.scss';
 @import './components/not-found.scss';
 @font-face {
-  font-family: 'Estedad';
+  font-family: 'IRANSans';
   font-style: normal;
   font-weight: normal;
-  src: url('../assets/Fonts/Estedad/Estedad-Regular.ttf');
+  src: url('../assets/Fonts/iransans/IRANSansWeb\(FaNum\).ttf');
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Estedad, sans-serif;
+  font-family: IRANSans, sans-serif;
 }
 a {
   text-decoration: none;
@@ -53,7 +53,7 @@ h6,
 small,
 h3,
 a {
-  font-family: Estedad, sans-serif !important;
+  font-family: IRANSans, sans-serif !important;
 }
 html,
 body {

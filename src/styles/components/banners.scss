@@ -1,9 +1,13 @@
 .main-slider {
-  margin-bottom: 16px;
+  box-shadow: $main-box-shadow;
+  border-radius: 32px;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-bottom: 21px;
 }
 .slider-wrapper {
   //to display the box shadow completely
-  min-height: 220px;
+  // min-height: 220px;
 }
 .carousel-root {
   direction: initial !important;
@@ -65,7 +69,6 @@
   border-radius: 16px;
   background-color: #fff;
   margin-top: 16px;
-  box-shadow: $main-box-shadow;
 
   &__image {
     border-radius: 16px;
