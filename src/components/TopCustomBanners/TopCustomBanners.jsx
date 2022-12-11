@@ -3,8 +3,20 @@ import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
 import { FreeMode, Grid } from 'swiper'
 import { SwiperSlide, Swiper } from 'swiper/react'
-import categoryImage from 'assets/images/SDFSDF 1.png'
-function SwiperCategoryList({ mainCategories, isLoading }) {
+function TopCustomBanner({ banners, isLoading, categories }) {
+  const bannerLink = (banner) => {
+    switch (banner.type) {
+      case 'Category':
+        const categoryName = categories.find((cat) => cat.id === banner.category)?.name
+        return navigateTo.ProductCategory(banner.category, categoryName)
+      case 'Product':
+        return navigateTo.productDetails(banner.product)
+      case 'Hashtag':
+        return navigateTo.ProductListByHashtag(banner.hashtag_name)
+      default:
+        break
+    }
+  }
   return (
     <div className="swiper__categories">
       <Swiper
@@ -27,20 +39,23 @@ function SwiperCategoryList({ mainCategories, isLoading }) {
                 <Skeleton variant="circular" height={70} width={75} animation="wave" sx={{ marginLeft: '10px' }} />
               </SwiperSlide>
             ))
-          : mainCategories.map((category, index) => {
+          : banners.map((banner, index) => {
               return (
-                <SwiperSlide key={index}>
-                  <Link to={navigateTo.categoryDetails(category.id)}>
+                <SwiperSlide
+                  key={index}
+                  onClick={() => {
+                    if (banner.type === 'Url') {
+                      window.open(banner.hypertext, '_blank')
+                    }
+                  }}
+                >
+                  <Link to={bannerLink(banner)}>
                     <div
                       className={`swiper__categories__item ${
                         index % 2 === 0 ? 'swiper__categories__item--red' : 'swiper__categories__item--blue'
                       }`}
                     >
-                      {category.image_mobile ? (
-                        <img src={category.image_mobile} alt={category.name} />
-                      ) : (
-                        <img src={categoryImage} alt={category.name} />
-                      )}
+                      <img src={banner.top_banner} alt={banner.name} />
                     </div>
                   </Link>
                 </SwiperSlide>
@@ -51,4 +66,4 @@ function SwiperCategoryList({ mainCategories, isLoading }) {
   )
 }
 
-export default SwiperCategoryList
+export default TopCustomBanner

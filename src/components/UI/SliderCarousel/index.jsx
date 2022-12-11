@@ -14,8 +14,8 @@ function SliderCarousel({ data }) {
       useKeyboardArrows
     >
       {data.map((item) => (
-        <Link to={`product/${item.product}`}>
-          <div className="carousel-wrapper" key={item.id}>
+        <Link to={`product/${item.product}`} key={item.id}>
+          <div className="carousel-wrapper">
             <img src={item.image} width={24} height={24} alt={item.title} loading="lazy" />
             <div className="carousel__caption" style={{ maxWidth: '350px' }}>
               <p>{item.name}</p>

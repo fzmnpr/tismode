@@ -1,7 +1,20 @@
 import { Skeleton } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
-function CategoryGridList({ mainCategories, isLoading }) {
+function CategoryGridList({ banners, isLoading, categories }) {
+  const bannerLink = (banner) => {
+    switch (banner.type) {
+      case 'Category':
+        const categoryName = categories.find((cat) => cat.id === banner.category)?.name
+        return navigateTo.ProductCategory(banner.category, categoryName)
+      case 'Product':
+        return navigateTo.productDetails(banner.product)
+      case 'Hashtag':
+        return navigateTo.ProductListByHashtag(banner.hashtag_name)
+      default:
+        break
+    }
+  }
   return (
     <div className="category__grid-list container">
       {isLoading
@@ -17,14 +30,22 @@ function CategoryGridList({ mainCategories, isLoading }) {
                 className="category__grid-list__item"
               />
             ))
-        : mainCategories?.slice(0, 4).map((category) => (
-            <Link to={navigateTo.categoryDetails(category.id)} key={category.id}>
+        : banners?.slice(0, 4).map((banner) => (
+            <Link
+              to={bannerLink(banner)}
+              key={banner.id}
+              onClick={() => {
+                if (banner.type === 'Url') {
+                  window.open(banner.hypertext, '_blank')
+                }
+              }}
+            >
               <div className="category__grid-list__item">
                 <div className="category__grid-list__item__title">
-                  <p>{category.name}</p>
+                  <p>{banner.name}</p>
                 </div>
                 <div className="category__grid-list__item__image">
-                  <img src={category.image} alt={category.name} loading="lazy" />
+                  <img src={banner.center_banner} alt={banner.name} loading="lazy" />
                 </div>
               </div>
             </Link>

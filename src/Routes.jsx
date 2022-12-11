@@ -17,6 +17,8 @@ import { PrivateRoute } from 'components/PrivateRoute'
 import NotFound from 'containers/NotFound'
 import Products from 'containers/Products'
 import Orders from './containers/Orders'
+import { Suspense } from 'react'
+import AnimatedLoading from 'components/UI/AnimatedLoading'
 
 export const ROUTE_PATHS = {
   home: '/',
@@ -45,60 +47,63 @@ export const navigateTo = {
     `${ROUTE_PATHS.productCategory}`
       .replace(':productCategoryId', categoryId)
       .replace(':productCategoryName', categoryName),
+  ProductListByHashtag: (hashtag) => `${ROUTE_PATHS.products}/:hash`.replace(':hash', hashtag),
 }
 
 function AppRoutes({ size }) {
   return (
     <>
       <Layout size={size}>
-        <Routes>
-          <Route path={ROUTE_PATHS.home} element={<Home size={size} />} />
-          <Route path={ROUTE_PATHS.product} element={<ProductPage size={size} />} />
-          <Route path={ROUTE_PATHS.cart} element={<Cart />} />
-          <Route path={ROUTE_PATHS.login} element={<Login />} />
-          <Route path={ROUTE_PATHS.shop} element={<Categories />} />
-          <Route
-            path={ROUTE_PATHS.checkout}
-            element={
-              <PrivateRoute>
-                <CheckoutPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path={ROUTE_PATHS.discounted} element={<DisCountedProducts />} />
-          {/* <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} /> */}
-          <Route
-            path={ROUTE_PATHS.profile}
-            element={
-              <PrivateRoute>
-                <UserProfile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={ROUTE_PATHS.orders}
-            element={
-              <PrivateRoute>
-                <Orders />
-              </PrivateRoute>
-            }
-          />
-          <Route path={ROUTE_PATHS.login} element={<Login />} />
-          <Route path={ROUTE_PATHS.category} element={<CategoryPage />} />
-          <Route path={ROUTE_PATHS.categories} element={<CategoryPage />} />
-          <Route exact path={ROUTE_PATHS.search} element={<SearchResultsPage />} />
-          <Route exact path={ROUTE_PATHS.productCategory} element={<Products />} />
-          <Route exact path={ROUTE_PATHS.products} element={<Products />} />
-          <Route
-            path={ROUTE_PATHS.addresses}
-            element={
-              <PrivateRoute>
-                <Addresses />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={() => <AnimatedLoading />}>
+          <Routes>
+            <Route path={ROUTE_PATHS.home} element={<Home />} />
+            <Route path={ROUTE_PATHS.product} element={<ProductPage size={size} />} />
+            <Route path={ROUTE_PATHS.cart} element={<Cart />} />
+            <Route path={ROUTE_PATHS.login} element={<Login />} />
+            <Route path={ROUTE_PATHS.shop} element={<Categories />} />
+            <Route
+              path={ROUTE_PATHS.checkout}
+              element={
+                <PrivateRoute>
+                  <CheckoutPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path={ROUTE_PATHS.discounted} element={<DisCountedProducts />} />
+            {/* <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} /> */}
+            <Route
+              path={ROUTE_PATHS.profile}
+              element={
+                <PrivateRoute>
+                  <UserProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={ROUTE_PATHS.orders}
+              element={
+                <PrivateRoute>
+                  <Orders />
+                </PrivateRoute>
+              }
+            />
+            <Route path={ROUTE_PATHS.login} element={<Login />} />
+            <Route path={ROUTE_PATHS.category} element={<CategoryPage />} />
+            <Route path={ROUTE_PATHS.categories} element={<CategoryPage />} />
+            <Route exact path={ROUTE_PATHS.search} element={<SearchResultsPage />} />
+            <Route exact path={ROUTE_PATHS.productCategory} element={<Products />} />
+            <Route exact path={ROUTE_PATHS.products} element={<Products />} />
+            <Route
+              path={ROUTE_PATHS.addresses}
+              element={
+                <PrivateRoute>
+                  <Addresses />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </>
   )
