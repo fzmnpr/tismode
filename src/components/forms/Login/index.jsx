@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import arrowIcon from 'assets/icons/fi_arrow-left-circle.svg'
-import loginIcon from 'assets/icons/login.png'
+import React, { useEffect, useMemo, useState } from 'react'
 import { phoneNumber } from 'utils/regex/validation'
 import { toastConfig } from 'utils/toastConfig'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { CheckUserValidation } from './checkUserValidation'
 import { createUserProfile, getUserProfile } from 'services/userServices'
-import { getUser, getUserCartFromStorage } from 'state/actions'
-import { useDispatch } from 'react-redux'
-import AnimatedLoading from 'components/UI/AnimatedLoading'
+import { getCategories, getUser, getUserCartFromStorage } from 'state/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { convertToEnglish } from 'utils/convertNumbers'
+import LoginIcon from 'components/UI/Icons/LoginIcon'
+import { request } from 'utils/customAxiosInterceptor'
+import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
 function Login() {
   const [step, setStep] = useState(1)
   const [value, setValue] = useState('')
@@ -28,6 +29,22 @@ function Login() {
     window.addEventListener('keydown', handleEnter)
     return () => window.removeEventListener('keydown', handleEnter)
   }, [value])
+  const [customBanners, setCustomBanners] = useState([])
+  const getCustomBanners = async () => {
+    try {
+      const customBanners = await request.get('CustomBanner')
+      setCustomBanners(customBanners?.data?.filter((banner) => banner.is_enabled))
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
+  }
+  useMemo(() => getCustomBanners(), [])
+  useEffect(() => {
+    dispatch(getCategories())
+  }, [dispatch])
+  const { categories } = useSelector((state) => state.categories)
   const registerUser = async () => {
     setIsLoading(true)
     try {
@@ -69,27 +86,34 @@ function Login() {
   }
 
   async function confirmLogin() {
-    setIsLoading(true)
-    const checkUserValidation = new CheckUserValidation(value)
+    if (!value) {
+      setErrorMassage('شماره موبایل را به درستی وارد کنید!')
+      return
+    }
+    const phoneNumberValue = convertToEnglish(value)
+
     if (step === 1) {
-      setToken(checkUserValidation.token)
-      if (!phoneNumber(value)) {
+      if (!phoneNumber(phoneNumberValue)) {
         setErrorMassage('شماره موبایل را به درستی وارد کنید!')
+        setIsLoading(false)
         return
       }
       setErrorMassage(null)
+      setIsLoading(true)
+      const checkUserValidation = new CheckUserValidation(phoneNumberValue)
+      setToken(checkUserValidation.token)
       const status = await checkUserValidation.sendUserToken()
       if (status === 'success') {
         setStep(2)
         setValue('')
-        setPhone(value)
+        setPhone(phoneNumberValue)
         setIsLoading(false)
       } else {
         toast.error('لطفا دوباره  امتحان  کنید', toastConfig)
         setIsLoading(false)
       }
     } else if (step === 2) {
-      if (Number(value) !== token) {
+      if (parseInt(convertToEnglish(phoneNumberValue)) !== parseInt(token)) {
         setErrorMassage('کد اشتباه است')
         setIsLoading(false)
         return
@@ -99,38 +123,41 @@ function Login() {
     }
   }
   return (
-    <div className="container">
+    <div>
+      <TopCustomBanner
+        banners={customBanners.filter((banner) => banner.placement === 'Top')}
+        isLoading={false}
+        categories={categories}
+      />
       <div className="login">
-        <div className="login__title">
-          <h3>ورود</h3>
-          <div className="login__title__divider"></div>
-          <h3>ثبت نام</h3>
-        </div>
         <div className={`login__form  ${step === 1 ? 'step1' : ''}`}>
           <div className="login__form__command">
             {step === 1 ? 'لطفا شماره تلفن خود را وارد کنید' : 'لطفا کد تایید پیامک شده را وارد کنید'}
           </div>
           <div className="login__form__actions">
             <input
-              className={step === 1 ? 'login__form__phone' : 'login__form__code'}
-              placeholder={step === 1 ? '09995554444' : '- - - -'}
+              className="login__form__input"
+              placeholder={step === 1 ? ' - - - - - - - - - 9 0' : '- - - -'}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => {
+                if (errorMassage) setErrorMassage(null)
+                setValue(e.target.value)
+              }}
               onKeyDown={(e) => {
                 const numberValue = Number(e.key)
                 if (isNaN(numberValue) && e.key !== 'Backspace') e.preventDefault()
               }}
             />
-            <button className="login__form__confirm" onClick={confirmLogin} disabled={isLoading}>
-              {isLoading ? <AnimatedLoading background={'#000'} /> : step === 1 ? ' ورود' : 'تایید'}
+            <button
+              className={`login__form__button ${isLoading && 'login__form__button--loading'}`}
+              onClick={confirmLogin}
+              disabled={isLoading}
+            >
+              <LoginIcon />
             </button>
-            {!isLoading && (
-              <button className="login__form__enter" onClick={confirmLogin} disabled={isLoading}>
-                {step === 1 ? <img src={loginIcon} alt="login" /> : <img src={arrowIcon} alt="arrow" />}
-              </button>
-            )}
           </div>
           {errorMassage && <div className="login__form__error">{errorMassage}</div>}
+          {isLoading && <div className="login__form__loading-text">درحال دریافت اطلاعات...</div>}
         </div>
       </div>
     </div>

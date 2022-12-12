@@ -10,6 +10,7 @@ import { getCategories } from 'state/actions'
 import MobileAdsBanner from 'components/Banners/HomePageAdsBanner'
 import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
 import { request } from 'utils/customAxiosInterceptor'
+import { convertToEnglish, convertToPersian } from 'utils/convertNumbers'
 
 function Home() {
   const dispatch = useDispatch()

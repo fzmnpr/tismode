@@ -1,120 +1,85 @@
 .login {
-  margin-top: 45px;
-  @media screen and (max-width: 840px) {
-    margin-top: 16px;
-  }
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
-  filter: drop-shadow(-7px 7px 7px rgba(0, 0, 0, 0.25));
-  border-radius: $radius;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
-  &__title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h3 {
-      color: #ff5c08;
-      font-size: 3.375rem;
-      margin-left: 1rem;
-    }
-    &__divider {
-      vertical-align: middle;
-      font-size: 5rem;
-      margin-left: 1rem;
-      height: 64px;
-      width: 10px;
-      background-color: #ff5c08;
-    }
-  }
-  .step1 {
-    width: 60%;
-  }
+  padding-right: 40px;
+  padding-left: 40px;
   &__form {
     &__actions {
-      display: flex;
-      align-items: center;
-      font-size: 2rem;
+      position: relative;
+      margin-bottom: 8px;
     }
-    &__phone {
+    &__input {
+      background: #ffffff;
+      box-shadow: 0px 4.80952px 4.80952px rgba(0, 0, 0, 0.25), inset 7.21429px 0px 4.80952px rgba(0, 0, 0, 0.25);
+      border-radius: 24px;
+      outline: none;
+      border: none;
+      padding: 19px 10px;
+      padding-bottom: 10px;
+      padding-left: 77px;
       text-align: left;
-      padding: 1rem 0.875rem;
+      font-size: 20px;
+      &::placeholder {
+        color: #b5b5b5;
+        font-size: 28px;
+      }
     }
-    &__code {
+    &__button {
+      background: radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        radial-gradient(
+            65.28% 65.28% at 26.39% 20.83%,
+            rgba(255, 255, 255, 0.413) 0%,
+            rgba(255, 255, 255, 0) 69.79%,
+            rgba(255, 255, 255, 0) 100%
+          )
+          /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+        #3393ec;
+      box-shadow: 3.39735px 32.2748px 52.6589px rgba(0, 0, 0, 0.5);
+      border-top-right-radius: 80px;
+      border-bottom-right-radius: 80px;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+      border: none;
+      outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 12px;
+      padding-right: 8px;
+      min-height: 58px;
+      max-width: 77px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+      bottom: 2px;
+      &--loading {
+        background: radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)
+            /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+          radial-gradient(
+              65.28% 65.28% at 26.39% 20.83%,
+              rgba(255, 255, 255, 0.413) 0%,
+              rgba(255, 255, 255, 0) 69.79%,
+              rgba(255, 255, 255, 0) 100%
+            )
+            #c0bfbf;
+      }
+    }
+    &__loading-text {
       text-align: center;
     }
-    &__confirm {
-      border-radius: $radius;
-      font-size: 2rem;
-      padding: 3px 20px;
-    }
-    &__enter {
-      border-radius: 50%;
-      width: auto;
-      height: 100%;
-      padding: 8px 7px 2px 10px;
+    &__command {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 5px;
     }
     &__error {
       color: red;
-      padding-right: 1rem;
-      padding-top: 0.5rem;
-    }
-    button {
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      background: linear-gradient(230.01deg, #ff5c08 18.73%, #ae2a01 89.48%);
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      filter: drop-shadow(-7px 7px 7px rgba(0, 0, 0, 0.25));
-      margin-left: 3px;
-    }
-  }
-  input {
-    direction: ltr;
-    width: 100%;
-    height: 72px;
-    border-radius: $radius;
-    border: none;
-    font-size: 1.5rem;
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-left: 12px;
-    transition: all 0.5s ease;
-
-    &:focus {
-      outline: none;
-    }
-  }
-}
-@media (max-width: 780px) {
-  .login {
-    input {
-      margin: 1rem 0;
-      width: auto;
-    }
-    &__title {
-      h3 {
-        font-size: 2rem;
-      }
-      &__divider {
-        height: 40px;
-        width: 5px;
-      }
-    }
-    &__form {
-      text-align: center;
-      &__error {
-        font-size: 0.825rem;
-      }
-      &__actions {
-        flex-wrap: wrap;
-        justify-content: center;
-        button {
-          margin-top: 1rem;
-        }
-      }
+      font-size: 12px;
+      margin-right: 10px;
     }
   }
 }

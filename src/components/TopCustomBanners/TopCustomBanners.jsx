@@ -55,7 +55,7 @@ function TopCustomBanner({ banners, isLoading, categories }) {
                         index % 2 === 0 ? 'swiper__categories__item--red' : 'swiper__categories__item--blue'
                       }`}
                     >
-                      <img src={banner.top_banner} alt={banner.name} />
+                      <img src={banner.top_banner} alt={banner.name} loading="lazy" />
                     </div>
                   </Link>
                 </SwiperSlide>

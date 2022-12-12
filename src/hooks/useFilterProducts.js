@@ -19,8 +19,15 @@ export const useFilterProducts = (url, uniqueId, params) => {
   async function getDataList() {
     const productList = await request.get(url, params && params)
     if (uniqueId) {
-      const categoryProducts = productList.data.filter((item) => item.category[0]?.id === parseInt(uniqueId))
-      setProducts(categoryProducts)
+      // const categoryProducts = productList.data.filter((item) => item.category === parseInt(uniqueId))
+      let categoryProducts = []
+      productList.data.forEach((item) => {
+        const itemCategories = item.category.map((category) => category.id)
+        if(itemCategories.includes(parseInt(uniqueId))){
+          categoryProducts = [...categoryProducts,item]
+        }
+      })
+      setProducts([...categoryProducts])
       setOriginalProducts([...categoryProducts])
       setIsLoading(false)
       return

@@ -67,6 +67,8 @@
     &-wrapper {
       color: #208312;
       margin-right: auto;
+      display: flex;
+      align-items: center;
     }
     &-discount {
       color: #eb5757;
@@ -123,6 +125,7 @@
     &-box {
       padding: 16px 8px;
       padding-right: 8px;
+      margin-top: 16px;
     }
   }
   &__option {
@@ -202,4 +205,7 @@
   font-size: 14px;
 }
 .variant-error {
+}
+.hash-products {
+  margin-top: 16px;
 }

@@ -19,13 +19,7 @@ function ProductDetail({
       <div className="product__detail__infos">
         <div className="product__info">
           <div className="product__info__details">
-            {product?.information ? (
-              <div className="product__info__information">
-                <small className="information-title">ویژگی ها </small>
-                {/* <p className="information-text">{product.information}</p> */}
-              </div>
-            ) : null}
-            {product.status == 'None' ? null : (
+            {product.status === 'None' ? null : (
               <div className="box product__options-box">
                 <div className="product__options">
                   {sizeList?.length ? (

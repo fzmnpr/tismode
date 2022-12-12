@@ -59,7 +59,10 @@ function ProductPage() {
               <Breadcrumb
                 crumbs={[
                   {
-                    name: product.product.category[0].name,
+                    name:
+                      product.product.category.length > 1
+                        ? `${product.product.category[0]?.name} و ${product.product.category[1]?.name}`
+                        : product.product.category[0]?.name,
                     link: navigateTo.categoryDetails(
                       product.product.category[0]?.id,
                       product.product.category[0]?.name,

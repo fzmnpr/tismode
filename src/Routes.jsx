@@ -19,6 +19,7 @@ import Products from 'containers/Products'
 import Orders from './containers/Orders'
 import { Suspense } from 'react'
 import AnimatedLoading from 'components/UI/AnimatedLoading'
+import ProductListByHash from 'containers/ProductListByHash'
 
 export const ROUTE_PATHS = {
   home: '/',
@@ -36,6 +37,7 @@ export const ROUTE_PATHS = {
   addresses: '/addresses',
   productCategory: '/products/:productCategoryId/:productCategoryName',
   products: '/products',
+  hashProductList: '/products/:hash',
   addAddress: '/addresses/add',
   orders: '/orders/:userId/:status',
 }
@@ -47,7 +49,7 @@ export const navigateTo = {
     `${ROUTE_PATHS.productCategory}`
       .replace(':productCategoryId', categoryId)
       .replace(':productCategoryName', categoryName),
-  ProductListByHashtag: (hashtag) => `${ROUTE_PATHS.products}/:hash`.replace(':hash', hashtag),
+  ProductListByHashtag: (hashtag) => `${ROUTE_PATHS.hashProductList}`.replace(':hash', hashtag),
 }
 
 function AppRoutes({ size }) {
@@ -70,6 +72,7 @@ function AppRoutes({ size }) {
               }
             />
             <Route path={ROUTE_PATHS.discounted} element={<DisCountedProducts />} />
+            <Route path={ROUTE_PATHS.hashProductList} element={<ProductListByHash />} />
             {/* <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} /> */}
             <Route
               path={ROUTE_PATHS.profile}

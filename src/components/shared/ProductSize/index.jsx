@@ -53,7 +53,7 @@ function ProductSize({ sizeList, setSelectedSize, selectedSize }) {
         placeholder="انتخاب سایز"
         options={options}
         onChange={(value) => setSelectedSize(value)}
-        isSearchable
+        isSearchable={false}
         styles={styles}
       />
     </div>
