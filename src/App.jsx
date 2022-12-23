@@ -1,7 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css'
 import { useDispatch, useSelector } from 'react-redux'
 import AppRoutes from 'Routes'
-import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { getUserFromStorage } from '../src/state/actions'
 import { useEffect } from 'react'

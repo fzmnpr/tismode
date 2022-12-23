@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import CategoryGridList from 'components/HomePageCategories/CategoryGridList'
+import CenterCustomBanners from 'components/CenterCustomBanners'
 import { getCategories } from 'state/actions'
 import MobileAdsBanner from 'components/Banners/HomePageAdsBanner'
 import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
@@ -47,7 +47,7 @@ function Home() {
             <SliderBanner />
           </Grid>
           <Grid item xs={12} sm={12} lg={6}>
-            <CategoryGridList
+            <CenterCustomBanners
               banners={customBanners.filter((banner) => banner.placement === 'Center')}
               isLoading={isLoading}
               categories={categories}

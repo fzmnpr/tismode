@@ -3,7 +3,7 @@ import SliderCarousel from 'components/UI/SliderCarousel'
 import Skeleton from '@mui/material/Skeleton'
 import { getGalleryImages } from 'services/advertisementServices'
 import { useWindowSize } from 'hooks/useWindowSize'
-function SliderBanner() {
+const SliderBanner = React.memo(function SliderBanner() {
   const [loading, setLoading] = React.useState(true)
   const [response, setResponse] = React.useState([])
   const getGallery = async () => {
@@ -34,6 +34,6 @@ function SliderBanner() {
       <SliderCarousel data={images} />
     </div>
   )
-}
+})
 
 export default SliderBanner

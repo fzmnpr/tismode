@@ -12,7 +12,6 @@ import { Box } from '@mui/system'
 import { Fade, Grow } from '@mui/material'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import { Phone, Telegram } from '@mui/icons-material'
-import { useOutsideClick } from 'hooks/useOutsideClick'
 import { companyInfo } from 'ShopInformation'
 const color = '#292D32'
 const popperStyle = {

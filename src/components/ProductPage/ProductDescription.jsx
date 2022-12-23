@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-function ProductDescription({ product }) {
+const ProductDescription = memo(function ProductDescription({ product }) {
   return (
     <div className="product__description box">
       <h3>مشخصات محصول</h3>
@@ -11,6 +11,6 @@ function ProductDescription({ product }) {
       ></p>
     </div>
   )
-}
+})
 
 export default ProductDescription

@@ -135,7 +135,7 @@
     &--selected-1 {
       .category__main-item__name {
         color: #ffffff;
-        transition: color 0.8s ease-in;
+        transition: color 0.5s ease-in;
       }
     }
     &--selected-0 {
@@ -192,6 +192,7 @@
   }
 }
 .subcategory {
+  width: 100%;
   &__list {
     margin-top: 21px;
     display: grid;
@@ -214,8 +215,8 @@
     align-items: center;
     min-height: 180px;
     max-height: 200px;
-    min-width: 100px;
     &__image {
+      overflow: hidden;
       img {
         max-width: 100%;
         height: auto;

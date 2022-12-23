@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
-import { toastConfig } from 'utils/toastConfig'
-import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export { PrivateRoute }
 
 function PrivateRoute({ children }) {
   const userInfo = localStorage.getItem('user')
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (!userInfo) {
-      if (window.location.href === '#/checkout') localStorage.setItem('redirect', 'checkout')
-      window.location.href = '#/login'
-      // toast.error('لطفا ابتدا وارد شوید', toastConfig)
+      if (window.location.href.includes('checkout')) localStorage.setItem('redirect', 'checkout')
+      navigate('/login')
     }
   }, [])
 

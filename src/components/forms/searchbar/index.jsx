@@ -2,7 +2,7 @@ import { debounce, InputAdornment, TextField } from '@mui/material'
 import SearchResults from 'containers/SearchResults'
 import { usePrevious } from 'hooks/usePrevious'
 import React, { useEffect } from 'react'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { request } from 'utils/customAxiosInterceptor'
 import searchIcon from 'assets/icons/search-normal.svg'
 
@@ -25,7 +25,7 @@ function SearchBar() {
     if (e.key === 'Enter') {
       const params = { search: searchValue }
       navigate({
-        pathname: '/search/',
+        pathname: '/search',
         search: `?${createSearchParams(params)}`,
       })
       setIsOpen(false)
@@ -40,6 +40,7 @@ function SearchBar() {
       return () => window.removeEventListener('keydown', handleKeyPress)
     }
   }, [searchValue])
+
   return (
     <>
       <div className="desktop-search-bar">
@@ -52,7 +53,7 @@ function SearchBar() {
                 onClick={() => {
                   const params = { search: searchValue }
                   navigate({
-                    pathname: '/search/',
+                    pathname: '/search',
                     search: `?${createSearchParams(params)}`,
                   })
                   setIsOpen(false)

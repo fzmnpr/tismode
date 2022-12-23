@@ -1,4 +1,4 @@
-import mobileLogo from 'assets/icons/Frame102.svg'
+import mobileLogo from 'assets/logos/logo.png'
 import SearchBar from 'components/forms/searchbar'
 import { Link } from 'react-router-dom'
 import { ROUTE_PATHS } from 'Routes'
@@ -15,7 +15,7 @@ function MobileHeader() {
       </div>
       <div className="sm-margin">
         <Link to={ROUTE_PATHS.home}>
-          <img src={mobileLogo} alt="logo" className="mobile-logo" />
+          <img src={mobileLogo} alt="logo" className="mobile-logo" width={32} height={32} />
         </Link>
       </div>
     </div>

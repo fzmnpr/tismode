@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
 import { request } from 'utils/customAxiosInterceptor'
 import { Skeleton } from '@mui/material'
 
-function MobileAdsBanner() {
+const MobileAdsBanner = memo(function MobileAdsBanner() {
   const [data, setData] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const getBanner = async () => {
@@ -38,6 +38,6 @@ function MobileAdsBanner() {
       )}
     </>
   )
-}
+})
 
 export default MobileAdsBanner

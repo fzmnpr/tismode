@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
-function CategoryGridList({ banners, isLoading, categories }) {
+function CenterCustomBanners({ banners, isLoading, categories }) {
   const bannerLink = (banner) => {
     switch (banner.type) {
       case 'Category':
@@ -54,4 +54,4 @@ function CategoryGridList({ banners, isLoading, categories }) {
   )
 }
 
-export default CategoryGridList
+export default CenterCustomBanners

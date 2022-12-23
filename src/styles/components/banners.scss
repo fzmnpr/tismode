@@ -1,5 +1,5 @@
 .main-slider {
-  box-shadow: $main-box-shadow;
+  // box-shadow: $main-box-shadow;
   border-radius: 32px;
   margin-left: 18px;
   margin-right: 18px;
@@ -12,16 +12,12 @@
 .carousel-root {
   direction: initial !important;
 }
-.carousel .slide img {
-  width: 100%;
-  height: auto;
-  border-radius: $radius;
-  // max-height: 140px;
-}
+
 .carousel__caption {
   color: black;
-  margin-top: 16px;
+  margin-top: auto;
   font-weight: 600;
+  text-align: center;
 }
 .nextArrow,
 .prevArrow {
@@ -49,13 +45,24 @@
 .main-slider {
   cursor: pointer;
 }
-.carousel .slide .carousel-wrapper {
+.carousel-image {
+  width: 100%;
+  height: auto;
+  width: 100%;
+  height: auto;
+  border-radius: $radius;
+  margin-bottom: 16px;
+}
+.carousel-wrapper {
   position: relative;
   background-color: #fff;
   border-radius: 32px;
   padding: 21px 30px;
   box-shadow: $main-box-shadow;
+  min-height: 100%;
+  min-height: 200px;
 }
+
 .carousel-arrow {
   width: 24px !important;
   height: 24px !important;

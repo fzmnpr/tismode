@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { FreeMode, Grid } from 'swiper'
 import { SwiperSlide, Swiper } from 'swiper/react'
-function CheckoutProducts({ cart }) {
+const CheckoutProducts = memo(function CheckoutProducts({ cart }) {
   return (
     <div className="checkout-products checkout-box-item">
       <h3>کالاهای انتخاب شده:</h3>
@@ -25,6 +26,6 @@ function CheckoutProducts({ cart }) {
       </Swiper>
     </div>
   )
-}
+})
 
 export default CheckoutProducts

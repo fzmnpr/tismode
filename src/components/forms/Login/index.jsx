@@ -65,12 +65,10 @@ function Login() {
         if (user.data?.length) {
           localStorage.setItem('user', JSON.stringify(user.data))
           toast.success('شما با موفقیت وارد شدید', toastConfig)
-          if (localStorage.getItem('redirect')) {
-            window.location.href = '/checkout'
-            localStorage.removeItem('redirect')
-          } else {
-            window.location.href = '/'
-          }
+          // window.location.href = '/checkout'
+          // localStorage.removeItem('redirect')
+          navigate(-1)
+
           dispatch(getUser(user.data))
           dispatch(getUserCartFromStorage(user.data))
         } else {

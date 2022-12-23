@@ -20,6 +20,7 @@ import Orders from './containers/Orders'
 import { Suspense } from 'react'
 import AnimatedLoading from 'components/UI/AnimatedLoading'
 import ProductListByHash from 'containers/ProductListByHash'
+import ContactUs from 'containers/ContactUs'
 
 export const ROUTE_PATHS = {
   home: '/',
@@ -73,7 +74,7 @@ function AppRoutes({ size }) {
             />
             <Route path={ROUTE_PATHS.discounted} element={<DisCountedProducts />} />
             <Route path={ROUTE_PATHS.hashProductList} element={<ProductListByHash />} />
-            {/* <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} /> */}
+            <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} />
             <Route
               path={ROUTE_PATHS.profile}
               element={

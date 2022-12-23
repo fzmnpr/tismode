@@ -2,10 +2,12 @@ import ProductCard from 'components/shared/ProductCard'
 import { request } from 'utils/customAxiosInterceptor'
 import React, { useEffect } from 'react'
 import { Skeleton } from '@mui/material'
+import { useSearchParams } from 'react-router-dom'
 
 function SearchResultsPage() {
-  // const params = window.location.hash.split('#')[1].split('=')[1]
-  const params = window.location.hash.split('#')[1].split('=')[1]
+  const [searchParams] = useSearchParams()
+  const params = searchParams.get('search')
+
   const searchValue = decodeURIComponent(params)
   const [results, setResults] = React.useState([])
   const [loading, setLoading] = React.useState(false)

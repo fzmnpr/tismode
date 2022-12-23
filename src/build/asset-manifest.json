@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d95e57c1.css",
+    "main.js": "/static/js/main.3e83b236.js",
+    "static/media/Ellipse4.png": "/static/media/Ellipse4.725f85e7eaeb2381c2e8.png",
+    "static/media/IRANSansWeb(FaNum).ttf": "/static/media/IRANSansWeb(FaNum).6a10d7a5fb2bcdd12953.ttf",
+    "static/media/Twitter.svg": "/static/media/Twitter.d4afaa8d461de88b4bb68e152802ecd2.svg",
+    "static/media/instagram.svg": "/static/media/instagram.6ff7c8b50018ab4b6adf5cffd0d85f0b.svg",
+    "static/media/logo_icon.svg": "/static/media/logo_icon.90fc4773349387b1c232a67fc1840379.svg",
+    "static/media/Frame102.svg": "/static/media/Frame102.b349e8d146ef5fd365cceaa3a633ee52.svg",
+    "static/media/call.svg": "/static/media/call.0e6a27ffbe459ae54e14795c0d226e8c.svg",
+    "static/media/shopping-cart.svg": "/static/media/shopping-cart.d220627365c15969afb4ece05cf8a600.svg",
+    "static/media/Facebook.svg": "/static/media/Facebook.20c0240557eec571e1e6775fa489cb84.svg",
+    "static/media/teacher.svg": "/static/media/teacher.2ced76853c01ae7f11c2719b7b5b3d35.svg",
+    "index.html": "/index.html",
+    "static/media/shopping-bag.svg": "/static/media/shopping-bag.54011aa52d14f7fee694f2fd28e5e1de.svg",
+    "static/media/search-normal.svg": "/static/media/search-normal.39eab8361b77dc2408c8fa364ed436fa.svg",
+    "static/media/Home.svg": "/static/media/Home.dff69a3c48c55373472ce35655de9a8d.svg",
+    "static/media/user.svg": "/static/media/user.2af2514656a67f4f151ec9b6293b55ab.svg",
+    "static/media/user2.svg": "/static/media/user2.bf91e956d417798dc1f040048b069700.svg",
+    "main.d95e57c1.css.map": "/static/css/main.d95e57c1.css.map",
+    "main.3e83b236.js.map": "/static/js/main.3e83b236.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d95e57c1.css",
+    "static/js/main.3e83b236.js"
+  ]
+}
