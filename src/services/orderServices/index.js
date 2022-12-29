@@ -1,3 +1,4 @@
+import { BASE_URL_API } from 'config'
 import { toast } from 'react-toastify'
 import { request } from 'utils/customAxiosInterceptor'
 import { openRequestedTab } from 'utils/openRequestInNewTab'
@@ -39,8 +40,8 @@ export const proceedOrder = async (data, cart, user) => {
       }
       const orderResult = await result()
       if (orderResult === true) {
-        localStorage.setItem('cart', [])
-        openRequestedTab(`http://rayansoft.co/order/${order}/pay`, 'پرداخت')
+        localStorage.removeItem('cart')
+        openRequestedTab(`${BASE_URL_API}/order/${order}/pay`, 'پرداخت')
         loading = false
       } else {
         toast.error('عملیات با خطا مواجه شد', toastConfig)
@@ -49,6 +50,7 @@ export const proceedOrder = async (data, cart, user) => {
       toast.error(response.status, toastConfig)
       loading = false
     }
+
   } catch (error) {
     console.log(error)
     loading = false

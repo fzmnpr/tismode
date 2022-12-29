@@ -57,7 +57,7 @@ export function ProductColor({ setSelectedColor, selectedColor, colorList }) {
         placeholder="انتخاب رنگ"
         options={options}
         onChange={(value) => setSelectedColor(value)}
-        isSearchable
+        isSearchable={false}
         styles={styles}
       />
     </div>

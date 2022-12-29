@@ -64,10 +64,19 @@
   }
   &__price {
     display: inline-block;
-    &-wrapper {
+    &__unit {
+      margin-bottom: 1px;
+    }
+    &-price {
       color: #208312;
       margin-right: auto;
       display: flex;
+      align-items: end;
+      justify-content: end;
+    }
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
       align-items: center;
     }
     &-discount {
@@ -208,4 +217,10 @@
 }
 .hash-products {
   margin-top: 16px;
+}
+.colors,
+.sizes {
+  div {
+    overflow: visible !important;
+  }
 }

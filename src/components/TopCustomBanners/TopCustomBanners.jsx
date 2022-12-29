@@ -20,7 +20,8 @@ function TopCustomBanner({ banners, isLoading, categories }) {
   return (
     <div className="swiper__categories">
       <Swiper
-        slidesPerView={4}
+        // slidesPerView={auto}
+        slidesPerView={'auto'}
         modules={[FreeMode, Grid]}
         freeMode={{
           enabled: true,
@@ -29,9 +30,10 @@ function TopCustomBanner({ banners, isLoading, categories }) {
         followFinger={true}
         allowTouchMove={true}
         loop={true}
-        loopedSlides={4}
+        loopedSlides={120}
         centeredSlides={false}
         // spaceBetween={12}
+        // loopedSlides={12}
       >
         {isLoading
           ? new Array(5).fill(true).map((item, index) => (

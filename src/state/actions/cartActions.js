@@ -18,7 +18,12 @@ export const getCartCount = (count) => (dispatch) => {
     payload: count,
   })
 }
-/** product is the actual product and data is the selected variant eg.color and size*/
+/**
+ * 
+ * @param {Object} product the actual product
+ * @param {Object} data  the selected variant eg.color, size
+ * @param {boolean} isInCart are we in the cart page or any other pages?
+ */
 export const addToCart = (product, data, isInCart) => (dispatch) => {
   const hasError =  cartHasError(product, data)
   if (hasError) return
@@ -67,8 +72,7 @@ export const addToCart = (product, data, isInCart) => (dispatch) => {
 export const deleteFromCart = (product) => (dispatch) => {
   const user = JSON.parse(localStorage.getItem('user'))
   const cart = JSON.parse(localStorage.getItem('cart'))
-  const newCart = cart.filter((item) =>
-    item.product_variant ? item.product_variant !== product.product_variant : item.id !== product.id,
+  const newCart = cart.filter((item) => item.id !== product.id,
   )
   localStorage.setItem('cart', JSON.stringify(newCart))
   if (user) {

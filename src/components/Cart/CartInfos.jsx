@@ -9,7 +9,7 @@ function CartInfos({ cart }) {
         <button className="cart__payment__method__continue">
           {' '}
           <div className="cart__payment__method__price">
-            {cart.length > 1
+            {cart.length > 0
               ? convertToPersian(cart.reduce((a, b) => a + b.total_price * b.cartAmount, 0))
               : cart[0]?.total_price}
             <img src={priceImage} alt="" />

@@ -2,10 +2,10 @@ import { request } from 'utils/customAxiosInterceptor'
 
 export const addCartToServer = async (product, user) => {
   const data = {
-    product: product.product_variant ? product.product_variant : product.id,
+    product: product?.product_variant ? product?.product_variant : product?.id,
     user: user.id,
-    variant: product.product_variant ? product.id : null,
-    quantity: product.cartAmount || 1,
+    variant: product?.product_variant ? product?.id : null,
+    quantity: product?.cartAmount || 1,
   }
   try {
     const response = await request.post('CartItem', data)
@@ -19,9 +19,9 @@ export const addCartToServer = async (product, user) => {
 const getCartItems = async () => request.get('CartItem')
 export const updateCartInServer = async (user, product, type) => {
   let data = {
-    product: product.product_variant ? product.product_variant : product.id,
+    product: product?.product_variant ? product.product_variant : product.id,
     user: user.id,
-    variant: product.product_variant ? product.id : null,
+    variant: product?.product_variant ? product.id : null,
   }
   if (type === 'delete') {
     data = {
@@ -38,8 +38,8 @@ export const updateCartInServer = async (user, product, type) => {
     const cartItem = await getCartItems()
     if (cartItem.data) {
       const cartItemId = cartItem.data.find((item) =>
-        item.product === product.id && item.user === user.id && product.product_variant
-          ? item.variant === product.product_variant
+        item.product === product?.id && item?.user === user?.id && product?.product_variant
+          ? item.variant === product?.product_variant
           : null,
       )
       if (cartItemId) {

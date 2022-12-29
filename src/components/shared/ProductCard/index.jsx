@@ -71,8 +71,8 @@ function ProductCard({ product, isInCart }) {
                 <CardMedia
                   component="img"
                   sx={{
-                    minWidth: '116px',
-                    maxHeight: '113px',
+                    width: '116px',
+                    height: '113px',
                     border: '0.5px solid #E0E0E0',
                   }}
                   image={product.image}
@@ -99,7 +99,12 @@ function ProductCard({ product, isInCart }) {
                 </Box>
               ) : null}
             </Box>
-            <Link to={navigateTo.productDetails(product.productId || product?.id)}>
+            <Link
+              to={navigateTo.productDetails(product.productId || product?.id)}
+              style={{
+                flexShrink: 0,
+              }}
+            >
               <Box
                 className="thumbnail__caption"
                 sx={{
@@ -109,16 +114,19 @@ function ProductCard({ product, isInCart }) {
                 }}
               >
                 <p className="product__title">{product?.name}</p>
-                <div
-                  className={`product__price-wrapper  ${
-                    product?.status !== 'None' ? 'product__price-wrapper--with-option' : ''
-                  }`}
-                >
-                  <p className={'product__price ' + (product?.discount ? 'product__price--discounted' : '')}>
-                    {product?.discount ? convertToPersian(product?.total_price) : convertToPersian(product?.unit_price)}{' '}
-                  </p>
-                  <img src={priceImage} alt="" />
-
+                <div className="product__price-wrapper">
+                  <div
+                    className={`product__price-price  ${
+                      product?.status !== 'None' ? 'product__price-wrapper--with-option' : ''
+                    }`}
+                  >
+                    <p className={'product__price ' + (product?.discount ? 'product__price--discounted' : '')}>
+                      {product?.discount
+                        ? convertToPersian(product?.total_price)
+                        : convertToPersian(product?.unit_price)}{' '}
+                    </p>
+                    <img src={priceImage} alt="تومان" className="product__price__unit" />
+                  </div>
                   {product?.discount ? (
                     <s className="product__price product__price-discount">{convertToPersian(product?.unit_price)}</s>
                   ) : null}

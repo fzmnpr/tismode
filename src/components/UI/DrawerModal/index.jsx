@@ -9,7 +9,8 @@ import { Divider } from '@mui/material'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { Modal } from 'components/shared/Modal/index'
 import AnimatedLoading from '../AnimatedLoading'
-import lockScroll from 'react-lock-scroll'
+import { useEffect } from 'react'
+import { useScrollLockBody } from 'hooks/useLockedBody'
 
 const Root = styled('div')(({ theme }) => ({
   height: '100%',
@@ -37,10 +38,16 @@ const Drawer = styled(SwipeableDrawer)(({ theme }) => ({
 }))
 
 function DrawerModal({ open, setOpen, title, data, children, isLoading }) {
-  // This is used only for the example
-  // eslint-disable-next-line no-undefined
+  // const [blockScroll, allowScroll] = useScrollLockBody()
+
+  // useEffect(() => {
+  //   if (open) {
+  //     blockScroll()
+  //   } else {
+  //     allowScroll()
+  //   }
+  // }, [allowScroll, blockScroll, open])
   const { windowSize } = useWindowSize()
-  lockScroll(open)
   if (windowSize === 'lg') {
     return (
       <Modal open={open} title={title} setOpen={setOpen} isLoading={isLoading}>
@@ -64,9 +71,6 @@ function DrawerModal({ open, setOpen, title, data, children, isLoading }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         disableSwipeToOpen={false}
-        ModalProps={{
-          keepMounted: true,
-        }}
       >
         <StyledBox
           sx={{

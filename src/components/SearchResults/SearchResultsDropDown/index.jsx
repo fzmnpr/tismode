@@ -19,13 +19,15 @@ function SearchResultsDropDown({ searchValue, results, setIsOpen }) {
                     <span className="search-results__dropdown__item__image">
                       <img src={result.image} alt="product-img" />
                     </span>
-                    <div>
+                    <div className="search-results__dropdown__item__caption">
                       <span>{result.name}</span>
                       <div className="search-results__dropdown__item__prices">
                         <p className={'product-price ' + (result?.discount ? 'discounted' : '')}>
                           {result?.discount ? result?.total_price : result?.unit_price} تومان
                         </p>
-                        {result?.discount ? <p className="discount-price">{result?.unit_price} تومان</p> : null}
+                        {result?.discount ? (
+                          <s className="product__price-discount">{result?.unit_price} تومان</s>
+                        ) : null}
                       </div>
                     </div>
                   </div>

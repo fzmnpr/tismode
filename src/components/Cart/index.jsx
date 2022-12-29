@@ -16,19 +16,17 @@ function Cart() {
       <div className="cart__title">
         <p>سبد خرید شما</p>
       </div>
-      {cart && (
-        <div className="cart__content">
-          {cart.length > 0 ? (
-            <>
-              <div className="cart__items">
-                <CartItems cartItems={cart} />
-              </div>
-            </>
-          ) : (
-            <div className="cart__empty">سبد خرید شما خالی است!</div>
-          )}
-        </div>
-      )}
+      <div className="cart__content">
+        {!cart || !cart.length ? (
+          <div className="cart__empty">سبد خرید شما خالی است!</div>
+        ) : (
+          <>
+            <div className="cart__items">
+              <CartItems cartItems={cart} />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }
