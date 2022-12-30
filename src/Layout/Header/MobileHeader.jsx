@@ -15,7 +15,7 @@ function MobileHeader() {
       </div>
       <div className="sm-margin">
         <Link to={ROUTE_PATHS.home}>
-          <img src={mobileLogo} alt="logo" className="mobile-logo" width={32} height={32} />
+          <img src={mobileLogo} alt="logo" className="mobile-logo" width={32} height={30} />
         </Link>
       </div>
     </div>

@@ -1,32 +1,29 @@
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Link } from 'react-router-dom'
-import { Navigation } from 'swiper'
+import { Autoplay, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 function SliderCarousel({ data }) {
+  //TODO: add autoplay spped
   return (
     <Swiper
-      // showIndicators={false}
-      // showThumbs={false}
-      // // dynamicHeight={false}
-      // showStatus={false}
-      // showArrows={false}
-      // infiniteLoop
-      // useKeyboardArrows
       spaceBetween={12}
       allowTouchMove={true}
       centeredSlides={true}
       loop={true}
-      modules={[Navigation]}
+      modules={[Pagination, Autoplay]}
+      pagination={{
+        dynamicBullets: true,
+        clickable: true,
+      }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
     >
       {data.map((item) => (
-        <SwiperSlide key={item.id}>
+        <SwiperSlide key={item.id} className="carousel-wrapper">
           <Link to={`product/${item.product}`} key={item.id}>
-            <div className="carousel-wrapper">
-              <img src={item.image} alt={item.title} className="carousel-image" />
-              <div className="carousel__caption">{item.name}</div>
-            </div>
+            <img src={item.image} alt={item.title} className="carousel-image" />
           </Link>
         </SwiperSlide>
       ))}

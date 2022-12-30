@@ -1,4 +1,6 @@
 import 'react-toastify/dist/ReactToastify.css'
+import 'swiper/css/pagination'
+
 import { useDispatch, useSelector } from 'react-redux'
 import AppRoutes from 'Routes'
 import { BrowserRouter as Router } from 'react-router-dom'

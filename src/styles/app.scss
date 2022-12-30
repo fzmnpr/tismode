@@ -27,16 +27,14 @@ body {
   }
 }
 .App {
-  // background: url('../assets/images/background.png');
-  // background: linear-gradient(180deg, #3CB1E2 0%, rgba(245, 245, 245, 0) 30.9%);
   padding-top: 50px;
   direction: rtl;
   background-color: transparent;
 }
 header,
 .container {
-  padding-left: 110px;
-  padding-right: 110px;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 @media screen and (max-width: 990px) {

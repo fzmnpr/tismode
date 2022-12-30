@@ -1,20 +1,25 @@
 import { Skeleton } from '@mui/material'
+import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
 function CenterCustomBanners({ banners, isLoading, categories }) {
-  const bannerLink = (banner) => {
-    switch (banner.type) {
-      case 'Category':
-        const categoryName = categories.find((cat) => cat.id === banner.category)?.name
-        return navigateTo.ProductCategory(banner.category, categoryName)
-      case 'Product':
-        return navigateTo.productDetails(banner.product)
-      case 'Hashtag':
-        return navigateTo.ProductListByHashtag(banner.hashtag_name)
-      default:
-        break
-    }
-  }
+  const bannerLink = useCallback(
+    (banner) => {
+      switch (banner.type) {
+        case 'Category':
+          const categoryName = categories.find((cat) => cat.id === banner.category)?.name
+          return navigateTo.ProductCategory(banner.category, categoryName)
+        case 'Product':
+          return navigateTo.productDetails(banner.product)
+        case 'Hashtag':
+          return navigateTo.ProductListByHashtag(banner.hashtag_name)
+        default:
+          break
+      }
+    },
+    [categories],
+  )
+
   return (
     <div className="category__grid-list container">
       {isLoading
@@ -41,9 +46,7 @@ function CenterCustomBanners({ banners, isLoading, categories }) {
               }}
             >
               <div className="category__grid-list__item">
-                <div className="category__grid-list__item__title">
-                  <p>{banner.name}</p>
-                </div>
+                <div className="category__grid-list__item__title">{banner.name}</div>
                 <div className="category__grid-list__item__image">
                   <img src={banner.center_banner} alt={banner.name} loading="lazy" />
                 </div>

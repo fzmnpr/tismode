@@ -99,12 +99,7 @@ function ProductCard({ product, isInCart }) {
                 </Box>
               ) : null}
             </Box>
-            <Link
-              to={navigateTo.productDetails(product.productId || product?.id)}
-              style={{
-                flexShrink: 0,
-              }}
-            >
+            <Link to={navigateTo.productDetails(product.productId || product?.id)}>
               <Box
                 className="thumbnail__caption"
                 sx={{
