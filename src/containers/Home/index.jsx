@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import CenterCustomBanners from 'components/CenterCustomBanners'
 import { getCategories } from 'state/actions'
-import MobileAdsBanner from 'components/Banners/HomePageAdsBanner'
+import MobileAdsBanner from 'components/Banners/MobileAdsBanner'
 import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
 import { request } from 'utils/customAxiosInterceptor'
 import { convertToEnglish, convertToPersian } from 'utils/convertNumbers'
@@ -53,7 +53,7 @@ function Home() {
               categories={categories}
             />
           </Grid>
-          <Grid item xs={12} sm={12} lg={6} className="container">
+          <Grid item xs={12} sm={12} lg={6} className="container ">
             <MobileAdsBanner />
           </Grid>
         </Grid>

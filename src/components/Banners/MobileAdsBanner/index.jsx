@@ -1,9 +1,10 @@
-import { memo, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
 import { request } from 'utils/customAxiosInterceptor'
 import { Skeleton } from '@mui/material'
+import SliderCarousel from 'components/shared/SliderCarousel'
 
 const MobileAdsBanner = memo(function MobileAdsBanner() {
   const [data, setData] = useState()
@@ -11,7 +12,7 @@ const MobileAdsBanner = memo(function MobileAdsBanner() {
   const getBanner = async () => {
     const banner = await request.get('AdvertiseBanner')
     if (banner.data?.length) {
-      setData(banner.data[0])
+      setData(banner.data)
     }
     setIsLoading(false)
   }
@@ -19,24 +20,13 @@ const MobileAdsBanner = memo(function MobileAdsBanner() {
     getBanner()
   }, [])
   return (
-    <>
+    <div className="MobileAdsBanner">
       {isLoading ? (
-        <Skeleton variant="rectangular" height={200} sx={{ marginTop: '16px' }} />
+        <Skeleton variant="rectangular" height={200} />
       ) : (
-        <Link to={navigateTo.productDetails(data?.product)}>
-          <div className="banner">
-            <div className="banner__image">
-              <img
-                src={data?.banner || 'http://tismod.com/media/Advbanner/girl-blouse.jpg'}
-                alt={data?.name}
-                title={data?.name}
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </Link>
+        <SliderCarousel data={data} disableAutoplay={true} disableLoop={true} />
       )}
-    </>
+    </div>
   )
 })
 

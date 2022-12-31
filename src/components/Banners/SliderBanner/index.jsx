@@ -1,5 +1,5 @@
 import React from 'react'
-import SliderCarousel from 'components/UI/SliderCarousel'
+import SliderCarousel from 'components/shared/SliderCarousel'
 import Skeleton from '@mui/material/Skeleton'
 import { getGalleryImages } from 'services/advertisementServices'
 import { useWindowSize } from 'hooks/useWindowSize'

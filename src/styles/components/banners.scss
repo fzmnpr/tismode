@@ -88,8 +88,11 @@
   }
 }
 .swiper-pagination-bullet-active {
-  background: #f4544a;
+  background: $secondary;
 }
 .swiper-pagination {
   bottom: 15px !important;
+}
+.MobileAdsBanner {
+  margin-top: 16px;
 }
