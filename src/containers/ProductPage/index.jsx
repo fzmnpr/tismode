@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import ProductDetail from 'components/ProductPage/ProductDetail'
 import ProductImage from 'components/ProductPage/ProductImage'
 import { getProduct } from 'state/actions/productsActions'
@@ -13,7 +13,11 @@ import ProductDescription from 'components/ProductPage/ProductDescription'
 import { getProductsOtherImages } from 'services/productManagementServices'
 import Breadcrumb from 'components/BreadCrumbs'
 import { navigateTo } from 'Routes'
-
+import { Skeleton } from '@mui/material'
+const styles = {
+  marginTop: '16px',
+  borderRadius: '16px',
+}
 function ProductPage() {
   const { productId } = useParams()
   const dispatch = useDispatch()
@@ -32,7 +36,7 @@ function ProductPage() {
     setSelectedSize,
   )
   const [productImages, setProductImages] = useState([])
-  const getProductImages = async () => {
+  const getProductImages = useCallback(async () => {
     try {
       const allImages = await getProductsOtherImages()
       const productImages = allImages.data
@@ -44,16 +48,20 @@ function ProductPage() {
     } catch (error) {
       console.log(error)
     }
-  }
+  }, [product?.product?.id])
   useEffect(() => {
     getProductImages()
-  }, [product])
+  }, [getProductImages, product])
   return (
-    <>
+    <div className="product-page page container">
       {response.loading ? (
-        ''
+        <div className="">
+          <Skeleton variant="rectangle" height={100} sx={styles} />
+          <Skeleton variant="rectangle" height={500} sx={styles} />
+          <Skeleton variant="rectangle" height={80} sx={styles} />
+        </div>
       ) : response?.product ? (
-        <div className="product-page page container">
+        <>
           {product?.product && (
             <>
               <Breadcrumb
@@ -73,6 +81,7 @@ function ProductPage() {
                     link: '',
                   },
                 ]}
+                isLoading={response?.isLoading}
               />
               <div className=" product">
                 <div className="product__head__wrapper box">
@@ -102,11 +111,11 @@ function ProductPage() {
               </div>
             </>
           )}
-        </div>
+        </>
       ) : (
         <NotFound />
       )}
-    </>
+    </div>
   )
 }
 
