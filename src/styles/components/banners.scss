@@ -1,8 +1,8 @@
 .main-slider {
   // box-shadow: $main-box-shadow;
   border-radius: 32px;
-  margin-left: 18px;
-  margin-right: 18px;
+  margin-left: 32px;
+  margin-right: 32px;
   margin-bottom: 21px;
 }
 .slider-wrapper {
@@ -22,24 +22,26 @@
 .nextArrow,
 .prevArrow {
   background-color: rgba(255, 255, 255, 0.781);
-  padding: 8px;
   text-align: center;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   position: absolute;
   bottom: 50%;
   cursor: pointer;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .prevArrow {
-  left: 0;
+  left: -16px;
+}
+.nextArrow {
+  right: -16px;
   img {
     transform: rotate(180deg);
   }
-}
-.nextArrow {
-  right: 0;
 }
 .main-slider {
   cursor: pointer;
@@ -62,10 +64,6 @@
   // min-height: 200px;
 }
 
-.carousel-arrow {
-  width: 24px;
-  height: 24px;
-}
 .MuiSkeleton-rectangular {
   border-radius: $radius;
 }
