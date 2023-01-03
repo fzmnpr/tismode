@@ -14,7 +14,11 @@ function SearchResultsDropDown({ searchValue, results, setIsOpen }) {
           <div className="search-results__dropdown__body">
             {results.map((result, index) => {
               return (
-                <Link to={navigateTo.productDetails(result.id)} key={index} onClick={() => setIsOpen(false)}>
+                <Link
+                  to={navigateTo.productDetails(result.id, result.name)}
+                  key={index}
+                  onClick={() => setIsOpen(false)}
+                >
                   <div key={index} className="search-results__dropdown__item">
                     <span className="search-results__dropdown__item__image">
                       <img src={result.image} alt="product-img" />

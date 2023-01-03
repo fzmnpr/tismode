@@ -11,6 +11,7 @@ import { toastConfig } from 'utils/toastConfig'
 function ProductPriceArea({ response, loading, selectedSize, selectedColor }) {
   const [amount, setAmount] = useState(0)
   const dispatch = useDispatch()
+
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem('cart'))
     if (cart) {

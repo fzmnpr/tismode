@@ -87,6 +87,8 @@
       // margin-top: 8px;
 
       &__image {
+        width: 100%;
+
         img {
           width: 70px;
           height: 70px;
@@ -97,9 +99,8 @@
         color: #000;
         font-size: 16px;
         font-weight: 700;
-        line-height: 24px;
-        margin-left: 23px;
         text-align: center;
+        width: 100%;
       }
     }
   }

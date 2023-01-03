@@ -10,7 +10,7 @@ function CenterCustomBanners({ banners, isLoading, categories }) {
           const categoryName = categories.find((cat) => cat.id === banner.category)?.name
           return navigateTo.ProductCategory(banner.category, categoryName)
         case 'Product':
-          return navigateTo.productDetails(banner.product)
+          return navigateTo.productDetails(banner.product, banner.productName)
         case 'Hashtag':
           return navigateTo.ProductListByHashtag(banner.hashtag_name)
         default:

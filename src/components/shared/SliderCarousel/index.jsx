@@ -24,13 +24,16 @@ function SliderCarousel({ data, disableAutoplay, disableLoop }) {
           : false
       }
     >
-      {data.map((item) => (
-        <SwiperSlide key={item.id} className="carousel-wrapper">
-          <Link to={navigateTo.productDetails(item.id)} key={item.id}>
-            <img src={item.image || item.banner} alt={item.title} className="carousel-image" />
-          </Link>
-        </SwiperSlide>
-      ))}
+      {data.map((item) => {
+        const productName = item.ProductName || item.name
+        return (
+          <SwiperSlide key={item.id} className="carousel-wrapper">
+            <Link to={navigateTo.productDetails(item.product, productName)} key={item.id}>
+              <img src={item.image || item.banner} alt={item.title} className="carousel-image" />
+            </Link>
+          </SwiperSlide>
+        )
+      })}
     </Swiper>
   )
 }

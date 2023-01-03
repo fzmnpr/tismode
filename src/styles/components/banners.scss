@@ -28,19 +28,18 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 50%;
+  bottom: 50%;
   cursor: pointer;
   z-index: 2;
 }
 .prevArrow {
-  margin-left: 16px;
-}
-.nextArrow {
-  margin-right: 16px;
-  right: 0;
+  left: 0;
   img {
     transform: rotate(180deg);
   }
+}
+.nextArrow {
+  right: 0;
 }
 .main-slider {
   cursor: pointer;

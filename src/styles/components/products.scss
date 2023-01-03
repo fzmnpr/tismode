@@ -78,6 +78,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: fit-content;
+      margin-right: auto;
     }
     &-discount {
       color: #eb5757;
@@ -222,5 +224,33 @@
 .sizes {
   div {
     overflow: visible !important;
+  }
+}
+.shoppable-product {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  &__image {
+    width: 174px;
+    height: 174px;
+    img {
+      object-fit: cover;
+      width: 174px;
+      height: 174px;
+    }
+  }
+  &__caption {
+    padding: 6px;
+    background: #ffffff;
+    min-height: 115px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
   }
 }

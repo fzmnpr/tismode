@@ -21,10 +21,11 @@ import { Suspense } from 'react'
 import AnimatedLoading from 'components/UI/AnimatedLoading'
 import ProductListByHash from 'containers/ProductListByHash'
 import ContactUs from 'containers/ContactUs'
+import { handlizeName } from 'utils/handlizeName'
 
 export const ROUTE_PATHS = {
   home: '/',
-  product: '/product/:productId',
+  product: '/product/:productId/:productHandle',
   cart: '/cart',
   login: '/login',
   shop: '/shop',
@@ -44,12 +45,13 @@ export const ROUTE_PATHS = {
 }
 export const navigateTo = {
   categoryDetails: (categoryId) => `${ROUTE_PATHS.category}`.replace(':categoryId', categoryId),
-  productDetails: (productId) => `${ROUTE_PATHS.product}`.replace(':productId', productId),
+  productDetails: (productId, productHandle) =>
+    `${ROUTE_PATHS.product}`.replace(':productId', productId).replace(':productHandle', handlizeName(productHandle)),
   orders: (userId, status) => `${ROUTE_PATHS.orders}`.replace(':userId', userId).replace(':status', status),
   ProductCategory: (categoryId, categoryName) =>
     `${ROUTE_PATHS.productCategory}`
       .replace(':productCategoryId', categoryId)
-      .replace(':productCategoryName', categoryName),
+      .replace(':productCategoryName', handlizeName(categoryName)),
   ProductListByHashtag: (hashtag) => `${ROUTE_PATHS.hashProductList}`.replace(':hash', hashtag),
 }
 

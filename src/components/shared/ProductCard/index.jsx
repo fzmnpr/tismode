@@ -56,7 +56,7 @@ function ProductCard({ product, isInCart }) {
   return (
     <>
       {product && (
-        <Card sx={styles} to={navigateTo.productDetails(product?.id)} className="product__card">
+        <Card sx={styles} to={navigateTo.productDetails(product?.id, product?.name)} className="product__card">
           <CardContent
             sx={{
               display: 'flex',
@@ -67,7 +67,7 @@ function ProductCard({ product, isInCart }) {
             }}
           >
             <Box sx={{ padding: 0 }}>
-              <Link to={navigateTo.productDetails(product.productId || product?.id)}>
+              <Link to={navigateTo.productDetails(product.productId || product?.id, product?.name)}>
                 <CardMedia
                   component="img"
                   sx={{
@@ -99,7 +99,7 @@ function ProductCard({ product, isInCart }) {
                 </Box>
               ) : null}
             </Box>
-            <Link to={navigateTo.productDetails(product.productId || product?.id)}>
+            <Link to={navigateTo.productDetails(product.productId || product?.id, product?.name)}>
               <Box
                 className="thumbnail__caption"
                 sx={{

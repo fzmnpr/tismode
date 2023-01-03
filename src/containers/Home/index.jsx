@@ -3,14 +3,13 @@ import { Grid } from '@mui/material'
 import SliderBanner from 'components/Banners/SliderBanner'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
-import 'swiper/css'
-import 'swiper/css/navigation'
+
 import CenterCustomBanners from 'components/CenterCustomBanners'
-import { getCategories } from 'state/actions'
+import { getCategories, getProducts } from 'state/actions'
 import MobileAdsBanner from 'components/Banners/MobileAdsBanner'
 import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
 import { request } from 'utils/customAxiosInterceptor'
-import { convertToEnglish, convertToPersian } from 'utils/convertNumbers'
+import NewProducts from 'components/NewProducts'
 
 function Home() {
   const dispatch = useDispatch()
@@ -30,8 +29,18 @@ function Home() {
   useMemo(() => getCustomBanners(), [])
   useEffect(() => {
     dispatch(getCategories())
+    dispatch(getProducts())
   }, [dispatch])
   const { categories } = useSelector((state) => state.categories)
+  const { products, loading } = useSelector((state) => state.products)
+  const newestProducts = useMemo(() => {
+    return products
+      .sort((a, b) => {
+        return a.create < b.create ? -1 : a.create > b.create ? 1 : 0
+      })
+      ?.splice(0, 10)
+  }, [products])
+
   return (
     <div className="home page">
       <main>
@@ -52,6 +61,9 @@ function Home() {
               isLoading={isLoading}
               categories={categories}
             />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6} className="container ">
+            <NewProducts products={newestProducts} loading={loading} />
           </Grid>
           <Grid item xs={12} sm={12} lg={6} className="container ">
             <MobileAdsBanner />
