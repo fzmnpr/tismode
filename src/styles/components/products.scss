@@ -215,8 +215,7 @@
   font-weight: 300;
   font-size: 14px;
 }
-.variant-error {
-}
+
 .hash-products {
   margin-top: 16px;
 }
@@ -232,12 +231,15 @@
   overflow: hidden;
 
   &__image {
-    width: 174px;
-    height: 174px;
+    // width: 174px;
+    // height: 174px;
     img {
-      object-fit: cover;
-      width: 174px;
-      height: 174px;
+      // object-fit: cover;
+      // width: 174px;
+      // height: 174px;
+      max-height: 174px;
+      height: auto;
+      width: 100%;
     }
   }
   &__caption {

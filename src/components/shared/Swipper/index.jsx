@@ -24,6 +24,14 @@ function Swipper({ loading, title, ...props }) {
         swiper.params.navigation.nextEl = navigationNextRef.current
       }}
       modules={[Navigation]}
+      breakpoints={{
+        600: {
+          slidesPerView: 2,
+        },
+        700: {
+          slidesPerView: 3,
+        },
+      }}
     >
       {loading
         ? new Array(4).fill(true).map((item, index) => (
