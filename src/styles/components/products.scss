@@ -103,10 +103,26 @@
     }
   }
   &__images {
+    position: relative;
     &__swiper {
       border-radius: 16px;
       border: 1px solid #f2f2f2;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    .nextArrow,
+    .prevArrow {
+      bottom: 45%;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .prevArrow {
+      left: -12px;
+    }
+    .nextArrow {
+      right: -12px;
     }
   }
   &__head {
