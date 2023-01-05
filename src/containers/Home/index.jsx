@@ -10,6 +10,7 @@ import MobileAdsBanner from 'components/Banners/MobileAdsBanner'
 import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
 import { request } from 'utils/customAxiosInterceptor'
 import NewProducts from 'components/NewProducts'
+import RecommendedProducts from 'components/RecommendedProducts'
 
 function Home() {
   const dispatch = useDispatch()
@@ -40,6 +41,9 @@ function Home() {
       })
       ?.splice(0, 10)
   }, [products])
+  const recommendedProducts = useMemo(() => {
+    return products.filter((product) => product.recommendation)
+  }, [products])
 
   return (
     <div className="home page">
@@ -68,6 +72,11 @@ function Home() {
           <Grid item xs={12} sm={12} lg={6} className="container ">
             <MobileAdsBanner />
           </Grid>
+          {recommendedProducts.length ? (
+            <Grid item xs={12} sm={12} lg={6} className="container ">
+              <RecommendedProducts products={recommendedProducts} loading={loading} />
+            </Grid>
+          ) : null}
         </Grid>
       </main>
     </div>
