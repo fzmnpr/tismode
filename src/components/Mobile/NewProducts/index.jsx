@@ -1,4 +1,4 @@
-import ShoppableProducts from 'components/ShppableProducts'
+import ShoppableProducts from 'components/Mobile/ShppableProducts'
 import TismodDivider from 'components/UI/TismodDivider'
 import React from 'react'
 

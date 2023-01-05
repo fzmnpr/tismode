@@ -1,4 +1,4 @@
-import Appbar from 'components/Appbar'
+import Appbar from 'components/Mobile/Appbar'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import Footer from './footer'

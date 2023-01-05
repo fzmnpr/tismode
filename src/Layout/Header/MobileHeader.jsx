@@ -1,8 +1,8 @@
 import mobileLogo from 'assets/logos/logo.png'
-import SearchBar from 'components/forms/searchbar'
 import { Link } from 'react-router-dom'
 import { ROUTE_PATHS } from 'Routes'
 import MenuIcon from 'components/UI/Icons/MenuIcon'
+import SearchBar from 'components/shared/forms/searchbar'
 
 function MobileHeader() {
   return (

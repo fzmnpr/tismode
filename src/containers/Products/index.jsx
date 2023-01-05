@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material'
-import Breadcrumb from 'components/BreadCrumbs'
-import ProductsFilters from 'components/ProductsFilter'
+import Breadcrumb from 'components/Mobile/BreadCrumbs'
+import ProductsFilters from 'components/Mobile/ProductsFilter'
 import ProductCard from 'components/shared/ProductCard'
 import NotFound from 'containers/NotFound'
 import { useFilterProducts } from '../../hooks/useFilterProducts'

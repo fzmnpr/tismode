@@ -1,4 +1,4 @@
-import DeliveryIcon from '../../UI/Icons/DeliveryIcon'
+import DeliveryIcon from 'components/UI/Icons/DeliveryIcon'
 import ChaparImage from 'assets/images/chapar.png'
 import postImage from 'assets/images/post.png'
 import tipaxImage from 'assets/images/tipaks.png'

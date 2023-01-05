@@ -1,4 +1,4 @@
-import SearchResultsDropDown from 'components/SearchResults/SearchResultsDropDown'
+import SearchResultsDropDown from 'components/shared/SearchResults/SearchResultsDropDown'
 
 function SearchResults({ searchValue, results, isOpen, setIsOpen }) {
   return (

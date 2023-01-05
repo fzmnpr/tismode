@@ -8,7 +8,7 @@ import unpaidImage from 'assets/images/unpaid.png'
 import inprogressImage from 'assets/images/inprogress.png'
 import deliveredImage from 'assets/images/delivered.png'
 import cancelledImage from 'assets/images/cancelled.png'
-import LocationIcon from '../UI/Icons/LocationIcon'
+import LocationIcon from 'components/UI/Icons/LocationIcon'
 // import LocationIcon from 'components/UI/Icons/LocationIcon'
 
 function Profile() {

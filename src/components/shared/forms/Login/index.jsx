@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { convertToEnglish } from 'utils/convertNumbers'
 import LoginIcon from 'components/UI/Icons/LoginIcon'
 import { request } from 'utils/customAxiosInterceptor'
-import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
+import TopCustomBanner from 'components/Mobile/TopCustomBanners/TopCustomBanners'
 function Login() {
   const [step, setStep] = useState(1)
   const [value, setValue] = useState('')

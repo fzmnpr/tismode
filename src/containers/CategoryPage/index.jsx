@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { useEffect } from 'react'
-import SubCategories from 'components/SubCategories'
+import SubCategories from 'components/Mobile/SubCategories'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCategories } from 'state/actions'

@@ -1,15 +1,15 @@
-import CheckoutAddress from 'components/Checkout/CheckoutAddress'
+import CheckoutAddress from 'components/Mobile/Checkout/CheckoutAddress'
 import AnimatedLoading from 'components/UI/AnimatedLoading'
 import React from 'react'
 import { proceedOrder } from 'services/orderServices'
 import { request } from 'utils/customAxiosInterceptor'
-import DeliveryMethod from 'components/Checkout/DeliveryMethod'
-import CheckoutProducts from 'components/Checkout/CheckoutProducts'
-import CheckoutPriceInfos from 'components/Checkout/CheckoutPriceInfos'
-import CheckoutAddAddress from 'components/Checkout/CheckoutAddAddress'
+import DeliveryMethod from 'components/Mobile/Checkout/DeliveryMethod'
 import AddIcon from 'components/UI/Icons/AddIcon'
 
 import { Alert } from '@mui/material'
+import CheckoutAddAddress from 'components/Mobile/Checkout/CheckoutAddAddress'
+import CheckoutPriceInfos from 'components/Mobile/Checkout/CheckoutPriceInfos'
+import CheckoutProducts from 'components/Mobile/Checkout/CheckoutProducts'
 function CheckoutPage() {
   const [isLoading, setIsLoading] = React.useState(true)
   const [user, setUser] = React.useState(null)

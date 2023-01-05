@@ -1,8 +1,8 @@
 import { Skeleton } from '@mui/material'
-import SliderBanner from 'components/Banners/SliderBanner'
 import React, { useState, useEffect } from 'react'
 import { request } from 'utils/customAxiosInterceptor'
 import LayersIcon from '@mui/icons-material/Layers'
+import SliderBanner from 'components/Mobile/Banners/SliderBanner'
 function Categories() {
   const [loading, setLoading] = React.useState(false)
   const [categories, setCategories] = useState([])

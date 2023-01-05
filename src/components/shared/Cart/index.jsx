@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import CartItems from './CartItems'
-import SearchBar from 'components/forms/searchbar'
+import SearchBar from '../forms/searchbar'
 import { getCart } from 'state/actions'
 import { useDispatch, useSelector } from 'react-redux'
 

@@ -1,4 +1,4 @@
-import ShoppableProduct from 'components/ShoppableProduct'
+import ShoppableProduct from 'components/Mobile/ShoppableProduct'
 import Swipper from 'components/shared/Swipper'
 import React from 'react'
 import { SwiperSlide } from 'swiper/react'

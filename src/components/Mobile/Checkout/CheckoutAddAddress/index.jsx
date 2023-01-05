@@ -1,4 +1,4 @@
-import AddressForm from 'components/forms/AddressForm'
+import AddressForm from 'components/shared/forms/AddressForm'
 import DrawerModal from 'components/UI/DrawerModal'
 
 function CheckoutAddAddress({ openForm, setOpenForm, setSelectedAddress, user, selectedAddress }) {

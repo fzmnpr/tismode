@@ -1,4 +1,4 @@
-import AddressListItem from 'components/AddressListItem'
+import AddressListItem from 'components/Mobile/AddressListItem'
 import React from 'react'
 import { request } from 'utils/customAxiosInterceptor'
 import Skeleton from '@mui/material/Skeleton'

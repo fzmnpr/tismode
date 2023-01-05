@@ -1,16 +1,16 @@
 import 'styles/index.scss'
 import { Grid } from '@mui/material'
-import SliderBanner from 'components/Banners/SliderBanner'
+import SliderBanner from 'components/Mobile/Banners/SliderBanner'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
 
-import CenterCustomBanners from 'components/CenterCustomBanners'
+import CenterCustomBanners from 'components/Mobile/CenterCustomBanners'
 import { getCategories, getProducts } from 'state/actions'
-import MobileAdsBanner from 'components/Banners/MobileAdsBanner'
-import TopCustomBanner from 'components/TopCustomBanners/TopCustomBanners'
+import MobileAdsBanner from 'components/Mobile/Banners/MobileAdsBanner'
+import TopCustomBanner from 'components/Mobile/TopCustomBanners/TopCustomBanners'
 import { request } from 'utils/customAxiosInterceptor'
-import NewProducts from 'components/NewProducts'
-import RecommendedProducts from 'components/RecommendedProducts'
+import NewProducts from 'components/Mobile/NewProducts'
+import RecommendedProducts from 'components/Mobile/RecommendedProducts'
 
 function Home() {
   const dispatch = useDispatch()

@@ -1,4 +1,4 @@
-import Profile from 'components/Profile'
+import Profile from 'components/shared/Profile'
 function UserProfile() {
   return (
     <div className="profile container">

@@ -1,19 +1,17 @@
 import 'react-toastify/dist/ReactToastify.css'
 
 import { Route, Routes } from 'react-router-dom'
-import Cart from 'components/Cart'
 import Categories from 'containers/Categories'
 import CategoryPage from 'containers/CategoryPage'
 import Home from 'containers/Home'
-import Login from 'components/forms/Login'
+import Login from 'components/shared/forms/Login'
 import ProductPage from 'containers/ProductPage'
 import UserProfile from 'containers/UserProfile'
 import CheckoutPage from 'containers/CheckoutPage'
-import SearchResultsPage from 'components/SearchResults/SearchResultsPage'
-import DisCountedProducts from 'components/DiscountedProducts'
+import SearchResultsPage from 'components/shared/SearchResults/SearchResultsPage'
 import Layout from 'Layout'
 import Addresses from 'containers/Addresses'
-import { PrivateRoute } from 'components/PrivateRoute'
+import { PrivateRoute } from 'components/shared/PrivateRoute'
 import NotFound from 'containers/NotFound'
 import Products from 'containers/Products'
 import Orders from './containers/Orders'
@@ -22,6 +20,7 @@ import AnimatedLoading from 'components/UI/AnimatedLoading'
 import ProductListByHash from 'containers/ProductListByHash'
 import ContactUs from 'containers/ContactUs'
 import { handlizeName } from 'utils/handlizeName'
+import Cart from 'components/shared/Cart'
 
 export const ROUTE_PATHS = {
   home: '/',
@@ -74,7 +73,6 @@ function AppRoutes({ size }) {
                 </PrivateRoute>
               }
             />
-            <Route path={ROUTE_PATHS.discounted} element={<DisCountedProducts />} />
             <Route path={ROUTE_PATHS.hashProductList} element={<ProductListByHash />} />
             <Route path={ROUTE_PATHS.contactUs} element={<ContactUs />} />
             <Route
