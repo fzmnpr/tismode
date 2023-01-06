@@ -14,7 +14,7 @@ function SearchBar() {
   const navigate = useNavigate()
 
   const returnedFunction = debounce(async function () {
-    const result = await request.get(`Product?search=${searchValue}`)
+    const result = await request.get(`Product?name=${searchValue}`)
     setResults(result.data)
     setIsOpen(true)
   }, 250)

@@ -7,13 +7,14 @@ import { request } from 'utils/customAxiosInterceptor'
 
 function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress }) {
   const [provinceList, setProvinceList] = React.useState([])
-  const [selectedProvince, setSelectedProvince] = React.useState('')
+  const [selectedProvince, setSelectedProvince] = React.useState()
   const [cityList, setCityList] = React.useState([])
   const [selectedCity, setSelectedCity] = React.useState('')
   const [provinceError, setProvinceError] = React.useState(null)
   const [cityError, setCityError] = React.useState(null)
   const [isLoading, setIsLoading] = React.useState(false)
   const [citiesLoading, setCitiesLoading] = React.useState(false)
+  const [newAddress, setNewAddress] = React.useState(selectedAddress)
   const {
     register,
     handleSubmit,
@@ -32,6 +33,14 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
           }
         }),
       )
+      if (selectedAddress) {
+        const currentProvince = response.data.find((province) => province.name === selectedAddress.province)
+        if (!currentProvince) return
+        setSelectedProvince({
+          value: currentProvince.id,
+          label: currentProvince.name,
+        })
+      }
       setIsLoading(false)
     } catch (error) {
       console.log(error)
@@ -50,12 +59,19 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
           }
         }),
       )
+      if (selectedAddress) {
+        const currentCity = response.data.cities.find((city) => city.name === selectedAddress.city)
+        if (!currentCity) return
+        setSelectedCity({
+          value: currentCity.id,
+          label: currentCity.name,
+        })
+      }
       setCitiesLoading(false)
     } catch (error) {
       console.log(error)
     }
   }
-
   const submitUserAddress = async (data) => {
     if (!selectedCity || !selectedProvince) return
     const userData = {
@@ -90,14 +106,34 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
         <form onSubmit={handleSubmit((data) => submitUserAddress(data))}>
           <div className="checkout__form__content__item">
             <div className="label">نام</div>
-            <input {...register('f_name', { required: 'این فیلد اجباریست' })} id="f_name" />
+            <input
+              {...register('f_name', { required: 'این فیلد اجباریست' })}
+              id="f_name"
+              value={newAddress.f_name}
+              onChange={(e) =>
+                setNewAddress({
+                  ...newAddress,
+                  f_name: e.target.value,
+                })
+              }
+            />
             <p className="error-message">
               <ErrorMessage errors={errors} name="f_name" />
             </p>
           </div>
           <div className="checkout__form__content__item">
             <div className="label">نام خانوادگی</div>
-            <input {...register('l_name', { required: 'این فیلد اجباریست' })} id="l_name" />
+            <input
+              {...register('l_name', { required: 'این فیلد اجباریست' })}
+              id="l_name"
+              value={newAddress.l_name}
+              onChange={(e) =>
+                setNewAddress({
+                  ...newAddress,
+                  l_name: e.target.value,
+                })
+              }
+            />
             <p className="error-message">
               <ErrorMessage errors={errors} name="l_name" />
             </p>
@@ -182,6 +218,13 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
               {...register('receiver_phone', {
                 required: 'این فیلد اجباریست',
               })}
+              value={newAddress.receiver_phone}
+              onChange={(e) =>
+                setNewAddress({
+                  ...newAddress,
+                  receiver_phone: e.target.value,
+                })
+              }
             />
             <p className="error-message">
               <ErrorMessage errors={errors} name="receiver_phone" />
@@ -189,7 +232,17 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
           </div>
           <div className="checkout__form__content__item">
             <div className="label">آدرس </div>
-            <textarea {...register('address', { required: 'این فیلد اجباریست' })} id="address" />
+            <textarea
+              {...register('address', { required: 'این فیلد اجباریست' })}
+              id="address"
+              value={newAddress.address}
+              onChange={(e) =>
+                setNewAddress({
+                  ...newAddress,
+                  address: e.target.value,
+                })
+              }
+            />
             <p className="error-message">
               <ErrorMessage errors={errors} name="address" />
             </p>
@@ -197,7 +250,17 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
 
           <div className="checkout__form__content__item postal-code">
             <div className="label">کد پستی</div>
-            <input {...register('code', { required: 'این فیلد اجباریست' })} id="code" />
+            <input
+              {...register('code', { required: 'این فیلد اجباریست' })}
+              id="code"
+              value={newAddress.code}
+              onChange={(e) =>
+                setNewAddress({
+                  ...newAddress,
+                  code: e.target.value,
+                })
+              }
+            />
             <p className="error-message">
               <ErrorMessage errors={errors} name="code" />{' '}
             </p>

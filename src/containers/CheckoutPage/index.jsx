@@ -123,7 +123,7 @@ function CheckoutPage() {
           <CheckoutProducts cart={cart} />
           <CheckoutPriceInfos cart={cart} deliveryMethod={deliveryMethod} />
           <button type="submit" className="checkout__submit-btn" onClick={submitAddress} disabled={isLoading}>
-            {checkoutLoading ? <AnimatedLoading bottom={'0.5rem'} background={'#000'} /> : 'ثبت اطلاعات و پرداخت'}
+            {checkoutLoading ? <AnimatedLoading bottom={'0.5rem'} background={'#ffff'} /> : 'ثبت اطلاعات و پرداخت'}
           </button>
         </>
       )}
