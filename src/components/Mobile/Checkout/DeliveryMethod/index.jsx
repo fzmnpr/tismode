@@ -28,7 +28,9 @@ function DeliveryMethod({ deliveryMethod, setDeliveryMethod }) {
   return (
     <div className="delivery-method checkout-box-item">
       <div className="delivery-method__body">
-        <DeliveryIcon />
+        <div>
+          <DeliveryIcon />
+        </div>
         <div className="delivery-method__items__wrapper">
           <h3>شیوه ارسال</h3>
           <div className="delivery-method__items">

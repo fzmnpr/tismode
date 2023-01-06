@@ -45,30 +45,28 @@ function CategoryPage() {
   return (
     <>
       <div className="category__page container page">
-        {loading ? null : (
-          <div className="category__container">
-            <div className="category__main-cats">
-              {mainCategories.slice(0, 2).map((category, index) => (
-                <div
-                  className={`category__main-item ${
-                    selectedCategory.id === category.id ? `category__main-item--selected-${index}` : ''
-                  }`}
-                  key={category.id}
-                  onClick={() =>
-                    setSelectedCategory({
-                      id: category.id,
-                      name: category.name,
-                    })
-                  }
-                >
-                  <div className="category__main-item__name">{category.name}</div>
-                </div>
-              ))}
-            </div>
-
-            <SubCategories selectedCategory={selectedCategory} categories={categories} />
+        <div className="category__container">
+          <div className="category__main-cats">
+            {mainCategories.slice(0, 2).map((category, index) => (
+              <div
+                className={`category__main-item ${
+                  selectedCategory.id === category.id ? `category__main-item--selected-${index}` : ''
+                }`}
+                key={category.id}
+                onClick={() =>
+                  setSelectedCategory({
+                    id: category.id,
+                    name: category.name,
+                  })
+                }
+              >
+                <div className="category__main-item__name">{category.name}</div>
+              </div>
+            ))}
           </div>
-        )}
+
+          <SubCategories selectedCategory={selectedCategory} categories={categories} />
+        </div>
       </div>
     </>
   )

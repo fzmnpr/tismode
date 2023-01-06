@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { addToCart, deleteFromCart } from 'state/actions'
 import { toast } from 'react-toastify'
 import { toastConfig } from 'utils/toastConfig'
+import RegularPricePrefix from 'components/UI/Icons/PricePrefix/RegularPricePrefix'
 
 const styles = {
   display: 'flex',
@@ -120,7 +121,7 @@ function ProductCard({ product, isInCart }) {
                         ? convertToPersian(product?.total_price)
                         : convertToPersian(product?.unit_price)}{' '}
                     </p>
-                    <img src={priceImage} alt="تومان" className="product__price__unit" />
+                    <RegularPricePrefix />
                   </div>
                   {product?.discount ? (
                     <s className="product__price product__price-discount">{convertToPersian(product?.unit_price)}</s>

@@ -1,6 +1,16 @@
 import { request } from 'utils/customAxiosInterceptor'
 import { useEffect, useState } from 'react'
-//* uniqueId is the id we get from useParams() if we are in a specific category and params is the possible data we might need to get the products list/
+
+/**
+ * 
+ * @param {string} url 
+ * @param {string} uniqueId uniqueId is the id we get from useParams() if we are in a specific category and params is the possible data we might need to get the products list
+ * @param {*} params 
+ * @returns  products: any[];
+    isLoading: boolean;
+    setActiveFilter: React.Dispatch<React.SetStateAction<number>>;
+    activeFilter: number;
+ */
 export const useFilterProducts = (url, uniqueId, params) => {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -23,8 +33,8 @@ export const useFilterProducts = (url, uniqueId, params) => {
       let categoryProducts = []
       productList.data.forEach((item) => {
         const itemCategories = item.category.map((category) => category.id)
-        if(itemCategories.includes(parseInt(uniqueId))){
-          categoryProducts = [...categoryProducts,item]
+        if (itemCategories.includes(parseInt(uniqueId))) {
+          categoryProducts = [...categoryProducts, item]
         }
       })
       setProducts([...categoryProducts])

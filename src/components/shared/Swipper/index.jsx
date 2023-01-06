@@ -1,7 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Grid, Navigation } from 'swiper'
-import ArrowLeftIcon from 'assets/icons/Vector.png'
+import { Navigation } from 'swiper'
 import { Skeleton } from '@mui/material'
 
 function Swipper({ loading, title, ...props }) {
@@ -11,11 +10,10 @@ function Swipper({ loading, title, ...props }) {
     <div className="swiper-wrapper">
       <Swiper
         spaceBetween={props.spaceBetween || 24}
-        allowTouchMove={true}
         // loopedSlides={120}
-        centeredSlides={false}
-        allowSlideNext
-        allowSlidePrev
+        observer
+        observeParents
+        parallax
         loop={true}
         slidesPerView={2}
         navigation={{

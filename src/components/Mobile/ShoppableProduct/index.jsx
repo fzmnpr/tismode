@@ -1,8 +1,8 @@
 import React from 'react'
 import { convertToPersian } from 'utils/convertNumbers'
-import priceImage from 'assets/images/Frame 297.png'
 import { Link } from 'react-router-dom'
 import { navigateTo } from 'Routes'
+import RegularPricePrefix from 'components/UI/Icons/PricePrefix/RegularPricePrefix'
 
 function ShoppableProduct({ product }) {
   if (!product) return
@@ -23,7 +23,7 @@ function ShoppableProduct({ product }) {
               <p className={'product__price ' + (product?.discount ? 'product__price--discounted' : '')}>
                 {product?.discount ? convertToPersian(product?.total_price) : convertToPersian(product?.unit_price)}{' '}
               </p>
-              <img src={priceImage} alt="تومان" className="product__price__unit" />
+              <RegularPricePrefix />
             </div>
             {product?.discount ? (
               <s className="product__price product__price-discount">{convertToPersian(product?.unit_price)}</s>
