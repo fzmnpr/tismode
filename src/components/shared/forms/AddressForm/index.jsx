@@ -2,14 +2,13 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { getCityList, getProvinceList } from 'services/cityProvinceServices'
 import { ErrorMessage } from '@hookform/error-message'
-import { Autocomplete, Box, TextField } from '@mui/material'
 import { request } from 'utils/customAxiosInterceptor'
-
+import CustomAutoComplete from 'components/UI/CustomAutoComplete'
+import { usePrevious } from 'hooks/usePrevious'
+import { AddressFields } from './AddressFields'
 function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress }) {
   const [provinceList, setProvinceList] = React.useState([])
-  const [selectedProvince, setSelectedProvince] = React.useState()
   const [cityList, setCityList] = React.useState([])
-  const [selectedCity, setSelectedCity] = React.useState('')
   const [provinceError, setProvinceError] = React.useState(null)
   const [cityError, setCityError] = React.useState(null)
   const [isLoading, setIsLoading] = React.useState(false)
@@ -19,7 +18,6 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
     register,
     handleSubmit,
     formState: { errors },
-    ...setValue
   } = useForm()
   const getAllProvince = async () => {
     setIsLoading(true)
@@ -36,9 +34,12 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
       if (selectedAddress) {
         const currentProvince = response.data.find((province) => province.name === selectedAddress.province)
         if (!currentProvince) return
-        setSelectedProvince({
-          value: currentProvince.id,
-          label: currentProvince.name,
+        setNewAddress({
+          ...newAddress,
+          province: {
+            value: currentProvince.id,
+            label: currentProvince.name,
+          },
         })
       }
       setIsLoading(false)
@@ -50,7 +51,7 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
   const getProvinceCities = async () => {
     setCitiesLoading(true)
     try {
-      const response = await getCityList(selectedProvince.label)
+      const response = await getCityList(newAddress?.province?.label)
       setCityList(
         response.data.cities.map((province) => {
           return {
@@ -62,9 +63,12 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
       if (selectedAddress) {
         const currentCity = response.data.cities.find((city) => city.name === selectedAddress.city)
         if (!currentCity) return
-        setSelectedCity({
-          value: currentCity.id,
-          label: currentCity.name,
+        setNewAddress({
+          ...newAddress,
+          city: {
+            value: currentCity.id,
+            label: currentCity.name,
+          },
         })
       }
       setCitiesLoading(false)
@@ -73,16 +77,16 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
     }
   }
   const submitUserAddress = async (data) => {
-    if (!selectedCity || !selectedProvince) return
+    if (cityError || provinceError) return
     const userData = {
       f_name: data.f_name,
       l_name: data.l_name,
-      address: `${selectedProvince.label}, ${selectedCity.label}, ${data.address}`,
-      // code: data.code,
+      address: data.address,
+      code: data.code,
       user: user.id,
       receiver_phone: data.receiver_phone,
-      city: selectedCity.label,
-      province: selectedProvince.label,
+      city: newAddress.city.label,
+      province: newAddress.province.label,
     }
     setSelectedAddress(userData)
     localStorage.setItem('address', JSON.stringify(userData))
@@ -96,183 +100,96 @@ function AddressForm({ setOpenForm, setSelectedAddress, user, selectedAddress })
     getAllProvince()
   }, [])
 
+  const prevProvince = usePrevious(newAddress.province)
   useEffect(() => {
-    if (selectedProvince) getProvinceCities()
-  }, [selectedProvince])
+    if (prevProvince?.value !== newAddress.province.value) getProvinceCities()
+  }, [newAddress.province, prevProvince])
 
   return (
     <div className="checkout__form">
       <div className="checkout__form__content">
         <form onSubmit={handleSubmit((data) => submitUserAddress(data))}>
-          <div className="checkout__form__content__item">
-            <div className="label">نام</div>
-            <input
-              {...register('f_name', { required: 'این فیلد اجباریست' })}
-              id="f_name"
-              value={newAddress.f_name}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  f_name: e.target.value,
-                })
-              }
-            />
-            <p className="error-message">
-              <ErrorMessage errors={errors} name="f_name" />
-            </p>
-          </div>
-          <div className="checkout__form__content__item">
-            <div className="label">نام خانوادگی</div>
-            <input
-              {...register('l_name', { required: 'این فیلد اجباریست' })}
-              id="l_name"
-              value={newAddress.l_name}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  l_name: e.target.value,
-                })
-              }
-            />
-            <p className="error-message">
-              <ErrorMessage errors={errors} name="l_name" />
-            </p>
-          </div>
-          <div className="checkout__form__content__item">
-            <div className="label">استان</div>
-            <Autocomplete
-              id="province-select"
-              freeSolo
-              sx={{ width: '100%', border: 'none' }}
-              options={provinceList}
-              autoHighlight
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                  {option.label}
-                </Box>
-              )}
-              value={selectedProvince || ''}
-              disableClearable
-              blurOnSelect
-              clearOnEscape
-              disableListWrap
-              loading={isLoading}
-              loadingText={'در حال جستجو'}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  inputProps={{
-                    ...params.inputProps,
-                    type: 'search',
-                  }}
-                />
-              )}
-              onChange={(e, value) => {
-                setSelectedCity(null)
-                setSelectedProvince(value)
-                setProvinceError(null)
-              }}
-            />
-            {provinceError && <p className="error-message">{cityError}</p>}
-          </div>
+          {AddressFields.map((field) => {
+            return (
+              <div className="checkout__form__content__item">
+                <div className="label">{field.label}</div>
+                {field.name === 'province' ? (
+                  <>
+                    <CustomAutoComplete
+                      isLoading={isLoading}
+                      options={provinceList}
+                      onChange={(e, value) => {
+                        setNewAddress({
+                          ...newAddress,
+                          city: null,
+                          province: value,
+                        })
+                        setProvinceError(null)
+                      }}
+                      value={newAddress.province}
+                    />
+                    {provinceError && <p className="error-message">{provinceError}</p>}
+                  </>
+                ) : field.name === 'city' ? (
+                  <>
+                    <CustomAutoComplete
+                      isLoading={citiesLoading}
+                      options={cityList}
+                      onChange={(e, value) => {
+                        setNewAddress({
+                          ...newAddress,
+                          city: value,
+                        })
+                        setCityError(null)
+                      }}
+                      value={newAddress.city}
+                    />
+                    {cityError && <p className="error-message">{cityError}</p>}
+                  </>
+                ) : field.name === 'address' ? (
+                  <textarea
+                    {...register('address', { required: 'این فیلد اجباریست' })}
+                    id="address"
+                    value={newAddress.address || ''}
+                    onChange={(e) =>
+                      setNewAddress({
+                        ...newAddress,
+                        address: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  <>
+                    <input
+                      {...register(field.name, { required: 'این فیلد اجباریست' })}
+                      id={newAddress[field.name]}
+                      value={newAddress[field.name] || ''}
+                      name={field.name}
+                      onChange={(e) => {
+                        newAddress[e.target.name] = e.target.value
+                        setNewAddress({
+                          ...newAddress,
+                          [e.target.name]: e.target.value,
+                        })
+                      }}
+                    />
+                    <p className="error-message">
+                      <ErrorMessage errors={errors} name={field.name} />
+                    </p>
+                  </>
+                )}
+              </div>
+            )
+          })}
 
-          <div className="checkout__form__content__item">
-            <div className="label">شهر</div>
-            <Autocomplete
-              id="city-select"
-              freeSolo
-              sx={{ width: '100%', border: 'none' }}
-              options={cityList}
-              value={selectedCity || ''}
-              autoHighlight
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                  {option.label}
-                </Box>
-              )}
-              disableClearable
-              blurOnSelect
-              clearOnEscape
-              disableListWrap
-              loading={citiesLoading}
-              loadingText={'در حال جستجو'}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  inputProps={{
-                    ...params.inputProps,
-                    type: 'search',
-                  }}
-                />
-              )}
-              onChange={(e, value) => {
-                setSelectedCity(value)
-                setCityError(null)
-              }}
-            />
-            {cityError && <p className="error-message">{cityError}</p>}
-          </div>
-          <div className="checkout__form__content__item checkout__form__content__item--phone-number">
-            <div className="label">شماره تلفن </div>
-            <input
-              {...register('receiver_phone', {
-                required: 'این فیلد اجباریست',
-              })}
-              value={newAddress.receiver_phone}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  receiver_phone: e.target.value,
-                })
-              }
-            />
-            <p className="error-message">
-              <ErrorMessage errors={errors} name="receiver_phone" />
-            </p>
-          </div>
-          <div className="checkout__form__content__item">
-            <div className="label">آدرس </div>
-            <textarea
-              {...register('address', { required: 'این فیلد اجباریست' })}
-              id="address"
-              value={newAddress.address}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  address: e.target.value,
-                })
-              }
-            />
-            <p className="error-message">
-              <ErrorMessage errors={errors} name="address" />
-            </p>
-          </div>
-
-          <div className="checkout__form__content__item postal-code">
-            <div className="label">کد پستی</div>
-            <input
-              {...register('code', { required: 'این فیلد اجباریست' })}
-              id="code"
-              value={newAddress.code}
-              onChange={(e) =>
-                setNewAddress({
-                  ...newAddress,
-                  code: e.target.value,
-                })
-              }
-            />
-            <p className="error-message">
-              <ErrorMessage errors={errors} name="code" />{' '}
-            </p>
-          </div>
           <div className="checkout__form__content__buttons">
             <button
               onClick={() => {
-                if (typeof selectedProvince === 'string') {
+                if (!newAddress.province.value) {
                   setProvinceError('لطفا استان را انتخاب کنید')
                 }
 
-                if (typeof selectedCity === 'string') {
+                if (!newAddress.city.value) {
                   setCityError('لطفا شهر را انتخاب کنید')
                 }
               }}

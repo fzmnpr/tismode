@@ -9,7 +9,9 @@ function CheckoutAddress({ address, openForm, setOpenForm }) {
       </div>
       <div className="addresses__list__item__address">
         <h3>آدرس:</h3>
-        <p className="addresses__list__item__text">{address.address}</p>
+        <p className="addresses__list__item__text">
+          {address.province},{address.city},{address.address}
+        </p>
         <span className="addresses__list__item__edit" onClick={() => setOpenForm(true)}>
           <span>
             <EditIcon />
