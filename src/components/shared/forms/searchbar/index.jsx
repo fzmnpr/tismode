@@ -2,7 +2,7 @@ import { debounce, InputAdornment, TextField } from '@mui/material'
 import SearchResults from 'containers/SearchResults'
 import { usePrevious } from 'hooks/usePrevious'
 import React, { useEffect } from 'react'
-import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 import { request } from 'utils/customAxiosInterceptor'
 import searchIcon from 'assets/icons/search-normal.svg'
 
@@ -14,7 +14,7 @@ function SearchBar() {
   const navigate = useNavigate()
 
   const returnedFunction = debounce(async function () {
-    const result = await request.get(`Product?name=${searchValue}`)
+    const result = await request.get(`Product?name__contains=${searchValue}`)
     setResults(result.data)
     setIsOpen(true)
   }, 250)

@@ -13,7 +13,7 @@ function SearchResultsPage() {
   const [loading, setLoading] = React.useState(false)
   const getResults = async () => {
     setLoading(true)
-    const result = await request.get(`Product?search=${searchValue}`)
+    const result = await request.get(`Product?name__contains=${searchValue}`)
     setResults(result.data)
     setLoading(false)
   }
