@@ -41,7 +41,7 @@ export const proceedOrder = async (data, cart, user) => {
       const orderResult = await result()
       if (orderResult === true) {
         localStorage.removeItem('cart')
-        openRequestedTab(`${BASE_URL_API}/order/${order}/pay`, 'پرداخت')
+        openRequestedTab(`http://backend.tismod.com/order/${order}/pay`, 'پرداخت')
         loading = false
       } else {
         toast.error('عملیات با خطا مواجه شد', toastConfig)
@@ -53,6 +53,9 @@ export const proceedOrder = async (data, cart, user) => {
 
   } catch (error) {
     console.log(error)
+    toast.error(`
+    عملیات با خطا مواحه شد
+    ${error.response.status}`, toastConfig)
     loading = false
   }
   return { loading }

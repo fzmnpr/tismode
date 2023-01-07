@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-let BASE_URL_API = 'http://backend.tismod.com'
+let BASE_URL_API = 'https://backend.tismod.com'
 let PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
 // if (process.env.NODE_ENV === 'production') {
