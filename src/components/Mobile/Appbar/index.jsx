@@ -104,7 +104,7 @@ function Appbar() {
           </svg>
         </div>
       </div>
-      <Popper id={id} open={open} anchorEl={anchorEl} transition>
+      <Popper id={id} open={open} anchorEl={anchorEl} transition sx={{ zIndex: '9' }}>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Box sx={{ mb: '16px' }}>
