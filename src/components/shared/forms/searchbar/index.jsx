@@ -18,9 +18,14 @@ function SearchBar() {
     setResults(result.data)
     setIsOpen(true)
   }, 250)
+  const closeDropdown = () => {
+    if (!isOpen) return
+    setIsOpen(false)
+  }
+
   const handleKeyPress = (e) => {
     if (e.key === 'Escape') {
-      setIsOpen(false)
+      closeDropdown()
     }
     if (e.key === 'Enter') {
       const params = { search: searchValue }
@@ -28,7 +33,7 @@ function SearchBar() {
         pathname: '/search',
         search: `?${createSearchParams(params)}`,
       })
-      setIsOpen(false)
+      closeDropdown()
     }
   }
   useEffect(() => {
@@ -56,7 +61,7 @@ function SearchBar() {
                     pathname: '/search',
                     search: `?${createSearchParams(params)}`,
                   })
-                  setIsOpen(false)
+                  closeDropdown()
                 }}
               >
                 <img src={searchIcon} alt="search" />
@@ -69,7 +74,7 @@ function SearchBar() {
           onFocus={() => setIsOpen(true)}
         />
       </div>
-      <SearchResults searchValue={searchValue} results={results} isOpen={isOpen} setIsOpen={setIsOpen} />
+      {isOpen && <SearchResults searchValue={searchValue} results={results} closeDropdown={closeDropdown} />}
     </>
   )
 }

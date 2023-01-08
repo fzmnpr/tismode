@@ -1,11 +1,9 @@
 import SearchResultsDropDown from 'components/shared/SearchResults/SearchResultsDropDown'
 
-function SearchResults({ searchValue, results, isOpen, setIsOpen }) {
+function SearchResults({ searchValue, results, closeDropdown }) {
   return (
     <div className="search-results">
-      {isOpen && (
-        <SearchResultsDropDown searchValue={searchValue} results={results} setIsOpen={setIsOpen} isOpen={isOpen} />
-      )}
+      <SearchResultsDropDown searchValue={searchValue} results={results} closeDropdown={closeDropdown} />
     </div>
   )
 }
